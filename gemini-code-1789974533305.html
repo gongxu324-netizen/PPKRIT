@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>00K Engagement - CK Feel The Fit</title>
+    <!-- 引入 Tailwind CSS 极速样式库 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0f0f11',
+                        cardbg: '#18181c',
+                        brandred: '#e50914',
+                        brandredhover: '#b20710'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0f0f11; color: #ffffff; font-family: system-ui, -apple-system, sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 relative pb-24">
+
+    <!-- 顶栏与背景音乐控制 -->
+    <header class="max-w-6xl mx-auto flex justify-between items-center mb-8 border-b border-gray-800 pb-4">
+        <div>
+            <h1 class="text-2xl font-bold tracking-wider text-red-600">00K ENGAGEMENT</h1>
+            <p class="text-sm text-gray-400">CALVIN KLEIN - FEEL THE FIT</p>
+        </div>
+        <div class="flex items-center gap-3">
+            <button id="bgm-btn" onclick="toggleBGM()" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-xs rounded-full border border-gray-700 flex items-center gap-2 transition">
+                <span>🎵 Play Music</span>
+            </button>
+            <audio id="bgm" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto space-y-8">
+
+        <!-- 进度统计区域 -->
+        <section class="bg-cardbg p-6 rounded-xl border border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h2 class="text-lg font-semibold text-gray-200">Posts Reviewed (打卡进度)</h2>
+                <p class="text-xs text-gray-400 mt-1">完成的任务会自动储存在本地浏览器中</p>
+            </div>
+            <div class="flex items-center gap-4 w-full md:w-auto">
+                <span id="progress-text" class="text-xl font-bold text-red-500">0 / 0</span>
+                <button onclick="resetProgress()" class="text-xs bg-gray-800 hover:bg-gray-700 px-3 py-2 rounded text-gray-300 border border-gray-700 transition">
+                    Reset Progress
+                </button>
+            </div>
+        </section>
+
+        <!-- 官方帖子区域 -->
+        <section>
+            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Brand & Official - Weibo</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="brand-posts"></div>
+        </section>
+
+        <!-- 媒体/KOL 区域 -->
+        <section>
+            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Media & KOL (Instagram)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="media-posts"></div>
+        </section>
+
+    </main>
+
+    <!-- 右下角浮动“文案库”按钮 -->
+    <button onclick="toggleCaptionModal(true)" class="fixed bottom-6 right-6 bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-3 rounded-full shadow-lg border border-red-500 transition flex items-center gap-2 z-40">
+        💬 Open Captions Box
+    </button>
+
+    <!-- 文案生成与复制弹窗 Modal -->
+    <div id="caption-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center p-4 hidden z-50">
+        <div class="bg-cardbg border border-gray-800 w-full max-w-md rounded-xl p-6 relative shadow-2xl">
+            <!-- 关闭按钮 -->
+            <button onclick="toggleCaptionModal(false)" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">✕</button>
+            
+            <h3 class="text-lg font-bold mb-4 text-white">CK Feel The Fit Captions</h3>
+
+            <!-- 平台选项（示意） -->
+            <div class="flex gap-2 mb-4">
+                <button class="flex-1 py-1.5 text-xs bg-red-600 font-bold rounded">IG</button>
+                <button class="flex-1 py-1.5 text-xs bg-gray-800 text-gray-400 rounded hover:bg-gray-700">X (Twitter)</button>
+            </div>
+
+            <!-- 开关选项 -->
+            <div class="flex justify-between items-center mb-4 text-xs text-gray-300">
+                <span>With Hashtag</span>
+                <input type="checkbox" id="hashtag-toggle" checked onchange="updateCaptionDisplay()" class="accent-red-600 w-4 h-4 cursor-pointer">
+            </div>
+
+            <!-- 文案展示框 -->
+            <div class="bg-black/50 border border-gray-800 rounded-lg p-4 mb-4 text-sm text-gray-200 min-h-[100px] flex items-center justify-center text-center" id="caption-box">
+                加载中...
+            </div>
+
+            <!-- 底部操作按钮 -->
+            <div class="flex gap-3">
+                <button onclick="nextRandomCaption()" class="flex-1 bg-gray-800 hover:bg-gray-700 py-2.5 rounded text-sm font-semibold transition border border-gray-700">
+                    🔀 Random
+                </button>
+                <button onclick="copyCaption()" class="flex-1 bg-red-600 hover:bg-red-700 py-2.5 rounded text-sm font-semibold transition">
+                    📋 Copy
+                </button>
+            </div>
+            
+            <div id="toast" class="hidden mt-3 text-center text-xs text-green-400 font-semibold">
+                Copied to Clipboard!
+            </div>
+        </div>
+    </div>
+
+    <!-- 前端核心数据与逻辑 -->
+    <script>
+        // 1. 帖子数据定义
+        const postsData = {
+            brand: [
+                { id: "b1", name: "Calvin Klein 官方微博", link: "https://weibo.com" },
+                { id: "b2", name: "Calvin Klein 动态 2", link: "https://weibo.com" },
+                { id: "b3", name: "Calvin Klein 动态 3", link: "https://weibo.com" }
+            ],
+            media: [
+                { id: "m1", name: "THE STANDARD POP", link: "https://instagram.com" },
+                { id: "m2", name: "Tatler Taiwan", link: "https://instagram.com" },
+                { id: "m3", name: "Tatler Thailand", link: "https://instagram.com" },
+                { id: "m4", name: "Mood Laundry", link: "https://instagram.com" },
+                { id: "m5", name: "Mint Magazine Thailand", link: "https://instagram.com" },
+                { id: "m6", name: "MEN'S FOLIO Singapore", link: "https://instagram.com" },
+                { id: "m7", name: "GQ Singapore", link: "https://instagram.com" },
+                { id: "m8", name: "GRAZIA Malaysia", link: "https://instagram.com" }
+            ]
+        };
+
+        // 2. 预设文案数据
+        const captions = [
+            "An elite masterpiece of modern luxury features Lingling Kwong and Calvin Klein.\n\n#LinglingKwongxCalvinKlein\n#CalvinKlein #linglingkwong",
+            "Absolute perfection! Lingling Kwong looks stunning in CK Feel The Fit!\n\n#LinglingKwongxCalvinKlein #LinglingKwong",
+            "The style, the elegance! Lingling Kwong for Calvin Klein.\n\n#LinglingKwong #CalvinKlein"
+        ];
+
+        let currentCaptionIndex = 0;
+
+        // 初始化页面
+        document.addEventListener("DOMContentLoaded", () => {
+            renderPosts();
+            updateProgress();
+            updateCaptionDisplay();
+        });
+
+        // 渲染帖子列表
+        function renderPosts() {
+            const completed = getCompletedPosts();
+            
+            const renderList = (data, containerId) => {
+                const container = document.getElementById(containerId);
+                container.innerHTML = data.map(post => {
+                    const isDone = completed.includes(post.id);
+                    return `
+                        <div class="bg-cardbg border ${isDone ? 'border-green-600 bg-green-950/20' : 'border-gray-800'} p-3 rounded-lg flex justify-between items-center transition">
+                            <span class="text-xs font-semibold px-2 py-0.5 rounded ${isDone ? 'bg-green-600 text-white' : 'bg-red-600 text-white'}">
+                                ${isDone ? 'DONE ✓' : 'BOOST!'}
+                            </span>
+                            <span class="text-sm font-medium text-gray-200 truncate mx-2 flex-1">${post.name}</span>
+                            <a href="${post.link}" target="_blank" onclick="markPostDone('${post.id}')" class="text-gray-400 hover:text-white p-1">
+                                ↗
+                            </a>
+                        </div>
+                    `;
+                }).join('');
+            };
+
+            renderList(postsData.brand, 'brand-posts');
+            renderList(postsData.media, 'media-posts');
+        }
+
+        // 本地储存逻辑 (LocalStorage)
+        function getCompletedPosts() {
+            return JSON.parse(localStorage.getItem('completed_posts') || '[]');
+        }
+
+        function markPostDone(postId) {
+            let completed = getCompletedPosts();
+            if (!completed.includes(postId)) {
+                completed.push(postId);
+                localStorage.setItem('completed_posts', JSON.stringify(completed));
+                setTimeout(() => {
+                    renderPosts();
+                    updateProgress();
+                }, 300);
+            }
+        }
+
+        function resetProgress() {
+            if (confirm("确定要重置打卡进度吗？")) {
+                localStorage.removeItem('completed_posts');
+                renderPosts();
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            const completed = getCompletedPosts();
+            const total = postsData.brand.length + postsData.media.length;
+            document.getElementById('progress-text').innerText = `${completed.length} / ${total}`;
+        }
+
+        // 弹窗与文案控制
+        function toggleCaptionModal(show) {
+            document.getElementById('caption-modal').classList.toggle('hidden', !show);
+        }
+
+        function updateCaptionDisplay() {
+            const withHashtag = document.getElementById('hashtag-toggle').checked;
+            let text = captions[currentCaptionIndex];
+            if (!withHashtag) {
+                text = text.replace(/#\w+/g, '').trim();
+            }
+            document.getElementById('caption-box').innerText = text;
+        }
+
+        function nextRandomCaption() {
+            currentCaptionIndex = Math.floor(Math.random() * captions.length);
+            updateCaptionDisplay();
+        }
+
+        function copyCaption() {
+            const text = document.getElementById('caption-box').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.remove('hidden');
+                setTimeout(() => toast.classList.add('hidden'), 2000);
+            });
+        }
+
+        // BGM 播放逻辑
+        function toggleBGM() {
+            const audio = document.getElementById('bgm');
+            const btn = document.getElementById('bgm-btn');
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = '⏸️ Pause Music';
+                btn.classList.add('border-red-600', 'text-red-500');
+            } else {
+                audio.pause();
+                btn.innerHTML = '🎵 Play Music';
+                btn.classList.remove('border-red-600', 'text-red-500');
+            }
+        }
+    </script>
+</body>
+</html>
