@@ -135,7 +135,7 @@
         // 2. 指定 Hashtags 列表[cite: 1, 2, 3]
         const targetHashtags = "#GUCCIxPPKRIT #Gucci #PPKritt";[cite: 1, 2, 3]
 
-        // 3. 随机评论生成词库（可自行在数组里扩充更多词汇）
+        // 3. 随机评论生成词库
         const captionTemplates = {
             openings: [
                 "Absolute perfection!",
@@ -162,7 +162,6 @@
         };
 
         let currentRawText = "";
-        let currentPlatform = 'IG';
 
         // 页面初始化
         document.addEventListener("DOMContentLoaded", () => {
@@ -192,7 +191,10 @@
                 finalText += `\n\n${targetHashtags}`;[cite: 1, 2, 3]
             }
 
-            document.getElementById('caption-box').innerText = finalText;
+            const captionBox = document.getElementById('caption-box');
+            if (captionBox) {
+                captionBox.innerText = finalText;
+            }
         }
 
         // 复制文案到剪贴板
@@ -210,6 +212,7 @@
             const completed = getCompletedPosts();
             const renderList = (data, containerId) => {
                 const container = document.getElementById(containerId);
+                if (!container) return;
                 container.innerHTML = data.map(post => {
                     const isDone = completed.includes(post.id);
                     return `
@@ -257,7 +260,10 @@
         function updateProgress() {
             const completed = getCompletedPosts();
             const total = postsData.brand.length + postsData.media.length;
-            document.getElementById('progress-text').innerText = `${completed.length} / ${total}`;
+            const el = document.getElementById('progress-text');
+            if (el) {
+                el.innerText = `${completed.length} / ${total}`;
+            }
         }
 
         function toggleCaptionWidget() {
@@ -275,7 +281,6 @@
         }
 
         function switchPlatform(platform) {
-            currentPlatform = platform;
             const tabIG = document.getElementById('tab-ig');
             const tabX = document.getElementById('tab-x');
             
