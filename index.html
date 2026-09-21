@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PP Engagement - GUCCI MILAN FW</title>
-    <!-- 引入 Tailwind CSS 极速样式库 -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,8 +13,7 @@
                     colors: {
                         darkbg: '#0f0f11',
                         cardbg: '#18181c',
-                        brandred: '#e50914',
-                        brandredhover: '#b20710'
+                        brandred: '#e50914'
                     }
                 }
             }
@@ -40,7 +39,7 @@
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto space-y-8">
+    <main class="max-w-6xl mx-auto space-y-8 pr-0 lg:pr-80">
 
         <!-- 进度统计区域 -->
         <section class="bg-cardbg p-6 rounded-xl border border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
@@ -59,66 +58,66 @@
         <!-- PP KRIT IG 区域 -->
         <section>
             <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">PP KRIT IG</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="brand-posts"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="brand-posts"></div>
         </section>
 
         <!-- Media & KOL 区域 -->
         <section>
             <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Media & KOL (Instagram)</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="media-posts"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="media-posts"></div>
         </section>
 
     </main>
 
-    <!-- 右下角浮动“文案库”按钮 -->
-    <button onclick="toggleCaptionModal(true)" class="fixed bottom-6 right-6 bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-3 rounded-full shadow-lg border border-red-500 transition flex items-center gap-2 z-40">
-        💬 Open Captions Box
+    <!-- 右上角固定展示的文案模块 (Captions Box) -->
+    <aside id="caption-widget" class="fixed top-6 right-6 w-80 bg-cardbg/95 backdrop-blur-md border border-gray-800 rounded-xl p-4 shadow-2xl z-50 transition-all">
+        <div class="flex justify-between items-center mb-3">
+            <div class="flex items-center gap-1.5 text-xs font-bold text-gray-200">
+                <span class="text-red-500">🪄</span> GUCCI Milan FW Captions
+            </div>
+            <button onclick="toggleCaptionWidget()" class="text-gray-400 hover:text-white text-xs px-1">✕</button>
+        </div>
+
+        <!-- 平台选项Tab -->
+        <div class="flex gap-1 mb-3 bg-black/40 p-1 rounded-lg">
+            <button id="tab-ig" onclick="switchPlatform('IG')" class="flex-1 py-1 text-xs bg-red-600 font-bold rounded text-white transition">IG</button>
+            <button id="tab-x" onclick="switchPlatform('X')" class="flex-1 py-1 text-xs text-gray-400 font-bold rounded hover:text-white transition">X</button>
+        </div>
+
+        <!-- With Hashtag 开关 -->
+        <div class="flex justify-between items-center mb-3 text-xs text-gray-300 bg-black/30 p-2 rounded-lg">
+            <span class="flex items-center gap-1">🏷️ With Hashtag</span>
+            <input type="checkbox" id="hashtag-toggle" checked onchange="updateCaptionDisplay()" class="accent-red-600 w-4 h-4 cursor-pointer">
+        </div>
+
+        <!-- 文案展示框 -->
+        <div class="bg-black/60 border border-gray-800/80 rounded-lg p-3 mb-3 text-xs text-gray-200 leading-relaxed min-h-[90px] flex items-center justify-center text-left" id="caption-box">
+            加载中...
+        </div>
+
+        <!-- 底部操作按钮 -->
+        <div class="flex gap-2">
+            <button onclick="generateRandomCaption()" class="flex-1 bg-gray-800 hover:bg-gray-700 py-2 rounded text-xs font-semibold transition border border-gray-700 flex items-center justify-center gap-1">
+                🔀 Random
+            </button>
+            <button onclick="copyCaption()" class="flex-1 bg-red-600 hover:bg-red-700 py-2 rounded text-xs font-semibold transition flex items-center justify-center gap-1">
+                📋 Copy
+            </button>
+        </div>
+        
+        <div id="toast" class="hidden mt-2 text-center text-xs text-green-400 font-semibold">
+            ✓ Copied to Clipboard!
+        </div>
+    </aside>
+
+    <!-- 右下角浮动“恢复显示”按钮 -->
+    <button id="restore-caption-btn" onclick="toggleCaptionWidget()" class="hidden fixed bottom-6 right-6 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-lg border border-red-500 transition z-40">
+        💬 Open Captions
     </button>
 
-    <!-- 文案生成与复制弹窗 Modal -->
-    <div id="caption-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center p-4 hidden z-50">
-        <div class="bg-cardbg border border-gray-800 w-full max-w-md rounded-xl p-6 relative shadow-2xl">
-            <!-- 关闭按钮 -->
-            <button onclick="toggleCaptionModal(false)" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">✕</button>
-            
-            <h3 class="text-lg font-bold mb-4 text-white">GUCCI Milan FW Captions</h3>
-
-            <!-- 平台选项 -->
-            <div class="flex gap-2 mb-4">
-                <button class="flex-1 py-1.5 text-xs bg-red-600 font-bold rounded">IG</button>
-                <button class="flex-1 py-1.5 text-xs bg-gray-800 text-gray-400 rounded hover:bg-gray-700">X (Twitter)</button>
-            </div>
-
-            <!-- 开关选项 -->
-            <div class="flex justify-between items-center mb-4 text-xs text-gray-300">
-                <span>With Hashtag</span>
-                <input type="checkbox" id="hashtag-toggle" checked onchange="updateCaptionDisplay()" class="accent-red-600 w-4 h-4 cursor-pointer">
-            </div>
-
-            <!-- 文案展示框 -->
-            <div class="bg-black/50 border border-gray-800 rounded-lg p-4 mb-4 text-sm text-gray-200 min-h-[100px] flex items-center justify-center text-center" id="caption-box">
-                加载中...
-            </div>
-
-            <!-- 底部操作按钮 -->
-            <div class="flex gap-3">
-                <button onclick="nextRandomCaption()" class="flex-1 bg-gray-800 hover:bg-gray-700 py-2.5 rounded text-sm font-semibold transition border border-gray-700">
-                    🔀 Random
-                </button>
-                <button onclick="copyCaption()" class="flex-1 bg-red-600 hover:bg-red-700 py-2.5 rounded text-sm font-semibold transition">
-                    📋 Copy
-                </button>
-            </div>
-            
-            <div id="toast" class="hidden mt-3 text-center text-xs text-green-400 font-semibold">
-                Copied to Clipboard!
-            </div>
-        </div>
-    </div>
-
-    <!-- 前端核心数据与逻辑 -->
+    <!-- JS 逻辑 -->
     <script>
-        // 1. 帖子数据定义
+        // 1. 帖子列表
         const postsData = {
             brand: [
                 { id: "pp1", name: "PP Krit Post 1", link: "https://www.instagram.com/p/DdfnlYIgV7S/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==" },
@@ -133,26 +132,82 @@
             ]
         };
 
-        // 2. 预设文案数据
-        const captions = [
-            "An elite masterpiece of modern luxury features PP Krit at GUCCI Milan FW.\n\n#PPKritxGucci\n#Gucci #PPKrit #GucciMFW",
-            "Absolute perfection! PP Krit looks stunning for GUCCI in Milan!\n\n#PPKritxGucci #PPKrit #Gucci",
-            "The style, the elegance! PP Krit for GUCCI Milan Fashion Week.\n\n#PPKrit #Gucci #GucciMFW"
-        ];
+        // 2. 指定 Hashtags 列表[cite: 1, 2, 3]
+        const targetHashtags = "#GUCCIxPPKRIT #Gucci #PPKritt";[cite: 1, 2, 3]
 
-        let currentCaptionIndex = 0;
+        // 3. 随机评论生成词库（可自行在数组里扩充更多词汇）
+        const captionTemplates = {
+            openings: [
+                "Absolute perfection!",
+                "The style, the elegance!",
+                "So proud of",
+                "Can't take my eyes off",
+                "Pure luxury and magic!",
+                "An absolute masterpiece!",
+                "Serving pure visual excellence!"
+            ],
+            subjects: [
+                "PP Krit at GUCCI Milan FW",
+                "PP Krit in Milan",
+                "PP Krit for GUCCI",
+                "PP Krit's incredible look"
+            ],
+            praises: [
+                "is completely stunning! 💖",
+                "is purely iconic! 🔥",
+                "looks so handsome and classy! ✨",
+                "is unmatched in every way! 🌹",
+                "shines brighter than ever! 💫"
+            ]
+        };
 
-        // 初始化页面
+        let currentRawText = "";
+        let currentPlatform = 'IG';
+
+        // 页面初始化
         document.addEventListener("DOMContentLoaded", () => {
             renderPosts();
             updateProgress();
-            updateCaptionDisplay();
+            generateRandomCaption(); // 初始生成一条评论
         });
 
-        // 渲染帖子列表
+        // 随机组装生成评论函数
+        function generateRandomCaption() {
+            const rand = arr => arr[Math.floor(Math.random() * arr.length)];
+            
+            const opening = rand(captionTemplates.openings);
+            const subject = rand(captionTemplates.subjects);
+            const praise = rand(captionTemplates.praises);
+
+            currentRawText = `${opening} ${subject} ${praise}`;
+            updateCaptionDisplay();
+        }
+
+        // 更新弹窗评论显示（处理 Hashtag 勾选状态）
+        function updateCaptionDisplay() {
+            const withHashtag = document.getElementById('hashtag-toggle').checked;
+            let finalText = currentRawText;
+
+            if (withHashtag) {
+                finalText += `\n\n${targetHashtags}`;[cite: 1, 2, 3]
+            }
+
+            document.getElementById('caption-box').innerText = finalText;
+        }
+
+        // 复制文案到剪贴板
+        function copyCaption() {
+            const text = document.getElementById('caption-box').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.remove('hidden');
+                setTimeout(() => toast.classList.add('hidden'), 2000);
+            });
+        }
+
+        // 渲染帖子
         function renderPosts() {
             const completed = getCompletedPosts();
-            
             const renderList = (data, containerId) => {
                 const container = document.getElementById(containerId);
                 container.innerHTML = data.map(post => {
@@ -175,7 +230,6 @@
             renderList(postsData.media, 'media-posts');
         }
 
-        // 本地储存逻辑 (LocalStorage)
         function getCompletedPosts() {
             return JSON.parse(localStorage.getItem('completed_posts') || '[]');
         }
@@ -206,35 +260,34 @@
             document.getElementById('progress-text').innerText = `${completed.length} / ${total}`;
         }
 
-        // 弹窗与文案控制
-        function toggleCaptionModal(show) {
-            document.getElementById('caption-modal').classList.toggle('hidden', !show);
-        }
+        function toggleCaptionWidget() {
+            const widget = document.getElementById('caption-widget');
+            const restoreBtn = document.getElementById('restore-caption-btn');
+            const isHidden = widget.classList.contains('hidden');
 
-        function updateCaptionDisplay() {
-            const withHashtag = document.getElementById('hashtag-toggle').checked;
-            let text = captions[currentCaptionIndex];
-            if (!withHashtag) {
-                text = text.replace(/#\w+/g, '').trim();
+            if (isHidden) {
+                widget.classList.remove('hidden');
+                restoreBtn.classList.add('hidden');
+            } else {
+                widget.classList.add('hidden');
+                restoreBtn.classList.remove('hidden');
             }
-            document.getElementById('caption-box').innerText = text;
         }
 
-        function nextRandomCaption() {
-            currentCaptionIndex = Math.floor(Math.random() * captions.length);
-            updateCaptionDisplay();
+        function switchPlatform(platform) {
+            currentPlatform = platform;
+            const tabIG = document.getElementById('tab-ig');
+            const tabX = document.getElementById('tab-x');
+            
+            if (platform === 'IG') {
+                tabIG.className = "flex-1 py-1 text-xs bg-red-600 font-bold rounded text-white transition";
+                tabX.className = "flex-1 py-1 text-xs text-gray-400 font-bold rounded hover:text-white transition";
+            } else {
+                tabX.className = "flex-1 py-1 text-xs bg-red-600 font-bold rounded text-white transition";
+                tabIG.className = "flex-1 py-1 text-xs text-gray-400 font-bold rounded hover:text-white transition";
+            }
         }
 
-        function copyCaption() {
-            const text = document.getElementById('caption-box').innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                const toast = document.getElementById('toast');
-                toast.classList.remove('hidden');
-                setTimeout(() => toast.classList.add('hidden'), 2000);
-            });
-        }
-
-        // BGM 播放逻辑
         function toggleBGM() {
             const audio = document.getElementById('bgm');
             const btn = document.getElementById('bgm-btn');
