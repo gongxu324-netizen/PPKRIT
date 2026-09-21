@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>00K Engagement - CK Feel The Fit</title>
+    <title>PP Engagement - CK Feel The Fit</title>
     <!-- 引入 Tailwind CSS 极速样式库 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -29,7 +29,7 @@
     <!-- 顶栏与背景音乐控制 -->
     <header class="max-w-6xl mx-auto flex justify-between items-center mb-8 border-b border-gray-800 pb-4">
         <div>
-            <h1 class="text-2xl font-bold tracking-wider text-red-600">00K ENGAGEMENT</h1>
+            <h1 class="text-2xl font-bold tracking-wider text-red-600">PP ENGAGEMENT</h1>
             <p class="text-sm text-gray-400">CALVIN KLEIN - FEEL THE FIT</p>
         </div>
         <div class="flex items-center gap-3">
@@ -56,13 +56,13 @@
             </div>
         </section>
 
-        <!-- 官方帖子区域 -->
+        <!-- PP KRIT IG 区域 -->
         <section>
-            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Brand & Official - Weibo</h3>
+            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">PP KRIT IG</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="brand-posts"></div>
         </section>
 
-        <!-- 媒体/KOL 区域 -->
+        <!-- Media & KOL 区域 -->
         <section>
             <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Media & KOL (Instagram)</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="media-posts"></div>
@@ -83,7 +83,7 @@
             
             <h3 class="text-lg font-bold mb-4 text-white">CK Feel The Fit Captions</h3>
 
-            <!-- 平台选项（示意） -->
+            <!-- 平台选项 -->
             <div class="flex gap-2 mb-4">
                 <button class="flex-1 py-1.5 text-xs bg-red-600 font-bold rounded">IG</button>
                 <button class="flex-1 py-1.5 text-xs bg-gray-800 text-gray-400 rounded hover:bg-gray-700">X (Twitter)</button>
@@ -121,27 +121,23 @@
         // 1. 帖子数据定义
         const postsData = {
             brand: [
-                { id: "b1", name: "Calvin Klein 官方微博", link: "https://weibo.com" },
-                { id: "b2", name: "Calvin Klein 动态 2", link: "https://weibo.com" },
-                { id: "b3", name: "Calvin Klein 动态 3", link: "https://weibo.com" }
+                { id: "pp1", name: "PP Krit Post 1", link: "https://www.instagram.com/p/DdfnlYIgV7S/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==" },
+                { id: "pp2", name: "PP Krit Reel 2", link: "https://www.instagram.com/reel/DdbfPrqiyjN/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==" }
             ],
             media: [
-                { id: "m1", name: "THE STANDARD POP", link: "https://instagram.com" },
-                { id: "m2", name: "Tatler Taiwan", link: "https://instagram.com" },
-                { id: "m3", name: "Tatler Thailand", link: "https://instagram.com" },
-                { id: "m4", name: "Mood Laundry", link: "https://instagram.com" },
-                { id: "m5", name: "Mint Magazine Thailand", link: "https://instagram.com" },
-                { id: "m6", name: "MEN'S FOLIO Singapore", link: "https://instagram.com" },
-                { id: "m7", name: "GQ Singapore", link: "https://instagram.com" },
-                { id: "m8", name: "GRAZIA Malaysia", link: "https://instagram.com" }
+                { id: "m1", name: "Media Post 1", link: "https://www.instagram.com/p/DdiJR6fk2HM/?utm_source=ig_web_copy_link&stkn=NTc4MTIwNjQ2YQ==" },
+                { id: "m2", name: "Media Post 2", link: "https://www.instagram.com/p/DcvuiRbk30l/?utm_source=ig_web_copy_link&stkn=NTc4MTIwNjQ2YQ==" },
+                { id: "m3", name: "Media Post 3", link: "https://www.instagram.com/p/Dddazn_zacH/?utm_source=ig_web_copy_link&stkn=NTc4MTIwNjQ2YQ==" },
+                { id: "m4", name: "Media Post 4", link: "https://www.instagram.com/p/DdiVUJRGqlR/?utm_source=ig_web_copy_link&stkn=NTc4MTIwNjQ2YQ==" },
+                { id: "m5", name: "Media Post 5", link: "https://www.instagram.com/p/Ddbt7K4k1b4/?utm_source=ig_web_copy_link&stkn=NTc4MTIwNjQ2YQ==" }
             ]
         };
 
         // 2. 预设文案数据
         const captions = [
-            "An elite masterpiece of modern luxury features Lingling Kwong and Calvin Klein.\n\n#LinglingKwongxCalvinKlein\n#CalvinKlein #linglingkwong",
-            "Absolute perfection! Lingling Kwong looks stunning in CK Feel The Fit!\n\n#LinglingKwongxCalvinKlein #LinglingKwong",
-            "The style, the elegance! Lingling Kwong for Calvin Klein.\n\n#LinglingKwong #CalvinKlein"
+            "An elite masterpiece of modern luxury features PP Krit and Calvin Klein.\n\n#PPKritxCalvinKlein\n#CalvinKlein #PPKrit",
+            "Absolute perfection! PP Krit looks stunning in CK Feel The Fit!\n\n#PPKritxCalvinKlein #PPKrit",
+            "The style, the elegance! PP Krit for Calvin Klein.\n\n#PPKrit #CalvinKlein"
         ];
 
         let currentCaptionIndex = 0;
