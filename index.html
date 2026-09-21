@@ -11,32 +11,32 @@
             theme: {
                 extend: {
                     colors: {
-                        morandigreen: '#6B8E85',
-                        morandipink: '#C08285',
-                        morandiblue: '#4A6B82',
-                        morandigray: '#8C979E',
-                        darkbg: '#12161A',
-                        cardbg: '#1D232A',
-                        cardborder: '#2A323D'
+                        softblue: '#7C9DAB',
+                        softpurple: '#A084CA',
+                        softtext: '#3A3845',
+                        subtext: '#82808F',
+                        cream: '#F9F6F0',
+                        cardbg: '#FFFFFF',
+                        cardborder: '#EAE5D9'
                     }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #12161A; color: #E2E8F0; font-family: system-ui, -apple-system, sans-serif; }
+        body { background-color: #F9F6F0; color: #3A3845; font-family: system-ui, -apple-system, sans-serif; }
     </style>
 </head>
-<body class="min-h-screen p-4 md:p-8 relative pb-24 bg-darkbg">
+<body class="min-h-screen p-4 md:p-8 relative pb-24 bg-cream">
 
     <!-- 顶栏与背景音乐控制 -->
-    <header class="max-w-6xl mx-auto flex justify-between items-center mb-8 border-b border-cardborder pb-4">
+    <header class="max-w-6xl mx-auto flex justify-between items-center mb-8 border-b border-[#EAE5D9] pb-4">
         <div>
-            <h1 class="text-2xl font-bold tracking-wider text-[#6B8E85]">PP ENGAGEMENT</h1>
-            <p class="text-sm text-[#8C979E]">GUCCI-MILAN FW</p>
+            <h1 class="text-2xl font-bold tracking-wider text-[#7C9DAB]">PP ENGAGEMENT</h1>
+            <p class="text-sm text-[#82808F]">GUCCI-MILAN FW</p>
         </div>
         <div class="flex items-center gap-3">
-            <button id="bgm-btn" onclick="toggleBGM()" class="px-4 py-2 bg-[#1D232A] hover:bg-[#2A323D] text-xs rounded-full border border-[#6B8E85]/50 text-[#E2E8F0] flex items-center gap-2 transition">
+            <button id="bgm-btn" onclick="toggleBGM()" class="px-4 py-2 bg-white hover:bg-[#7C9DAB]/10 text-xs rounded-full border border-[#7C9DAB]/40 text-[#3A3845] flex items-center gap-2 transition shadow-sm">
                 <span>🎵 Play Music</span>
             </button>
             <audio id="bgm" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
@@ -46,14 +46,14 @@
     <main class="max-w-6xl mx-auto space-y-8 pr-0 lg:pr-80">
 
         <!-- 进度统计区域 -->
-        <section class="bg-cardbg p-6 rounded-2xl border border-cardborder flex flex-col md:flex-row justify-between items-center gap-4 shadow-xl">
+        <section class="bg-cardbg p-6 rounded-2xl border border-cardborder flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm">
             <div>
-                <h2 class="text-lg font-semibold text-[#E2E8F0]">Posts Reviewed (打卡进度)</h2>
-                <p class="text-xs text-[#8C979E] mt-1">完成的任务会自动储存在本地浏览器中</p>
+                <h2 class="text-lg font-semibold text-[#3A3845]">Posts Reviewed (打卡进度)</h2>
+                <p class="text-xs text-[#82808F] mt-1">完成的任务会自动储存在本地浏览器中</p>
             </div>
             <div class="flex items-center gap-4 w-full md:w-auto">
-                <span id="progress-text" class="text-xl font-bold text-[#C08285]">0 / 0</span>
-                <button onclick="resetProgress()" class="text-xs bg-[#12161A] hover:bg-[#C08285]/20 px-3 py-2 rounded-lg text-[#8C979E] border border-[#C08285]/40 transition">
+                <span id="progress-text" class="text-xl font-bold text-[#A084CA]">0 / 0</span>
+                <button onclick="resetProgress()" class="text-xs bg-[#F9F6F0] hover:bg-[#A084CA]/20 px-3 py-2 rounded-lg text-[#82808F] border border-[#A084CA]/30 transition">
                     Reset Progress
                 </button>
             </div>
@@ -61,16 +61,16 @@
 
         <!-- PP KRIT IG 区域 -->
         <section>
-            <h3 class="text-sm font-bold text-[#8C979E] uppercase tracking-wider mb-4 flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#6B8E85]"></span> PP KRIT IG
+            <h3 class="text-sm font-bold text-[#82808F] uppercase tracking-wider mb-4 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#7C9DAB]"></span> PP KRIT IG
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="brand-posts"></div>
         </section>
 
         <!-- Media & KOL 区域 -->
         <section>
-            <h3 class="text-sm font-bold text-[#8C979E] uppercase tracking-wider mb-4 flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#C08285]"></span> Media & KOL (Instagram)
+            <h3 class="text-sm font-bold text-[#82808F] uppercase tracking-wider mb-4 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#A084CA]"></span> Media & KOL (Instagram)
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="media-posts"></div>
         </section>
@@ -78,48 +78,48 @@
     </main>
 
     <!-- 右上角固定展示的文案模块 (Captions Box) -->
-    <aside id="caption-widget" class="fixed top-6 right-6 w-80 bg-cardbg/95 backdrop-blur-md border border-[#6B8E85]/30 rounded-2xl p-4 shadow-2xl z-50 transition-all">
+    <aside id="caption-widget" class="fixed top-6 right-6 w-80 bg-white/90 backdrop-blur-md border border-[#7C9DAB]/30 rounded-2xl p-4 shadow-lg z-50 transition-all">
         <div class="flex justify-between items-center mb-3">
-            <div class="flex items-center gap-1.5 text-xs font-bold text-[#E2E8F0]">
-                <span class="text-[#C08285]">🪄</span> GUCCI Milan FW Captions
+            <div class="flex items-center gap-1.5 text-xs font-bold text-[#3A3845]">
+                <span class="text-[#A084CA]">🪄</span> GUCCI Milan FW Captions
             </div>
-            <button onclick="toggleCaptionWidget()" class="text-[#8C979E] hover:text-white text-xs px-1">✕</button>
+            <button onclick="toggleCaptionWidget()" class="text-[#82808F] hover:text-[#3A3845] text-xs px-1">✕</button>
         </div>
 
         <!-- 平台选项Tab -->
-        <div class="flex gap-1 mb-3 bg-[#12161A] p-1 rounded-xl border border-cardborder">
-            <button id="tab-ig" onclick="switchPlatform('IG')" class="flex-1 py-1.5 text-xs bg-[#6B8E85] font-bold rounded-lg text-white transition">IG</button>
-            <button id="tab-x" onclick="switchPlatform('X')" class="flex-1 py-1.5 text-xs text-[#8C979E] font-bold rounded-lg hover:text-white transition">X</button>
+        <div class="flex gap-1 mb-3 bg-[#F9F6F0] p-1 rounded-xl border border-cardborder">
+            <button id="tab-ig" onclick="switchPlatform('IG')" class="flex-1 py-1.5 text-xs bg-[#7C9DAB] font-bold rounded-lg text-white transition shadow-sm">IG</button>
+            <button id="tab-x" onclick="switchPlatform('X')" class="flex-1 py-1.5 text-xs text-[#82808F] font-bold rounded-lg hover:text-[#3A3845] transition">X</button>
         </div>
 
         <!-- With Hashtag 开关 -->
-        <div class="flex justify-between items-center mb-3 text-xs text-[#E2E8F0] bg-[#12161A] p-2.5 rounded-xl border border-cardborder">
+        <div class="flex justify-between items-center mb-3 text-xs text-[#3A3845] bg-[#F9F6F0] p-2.5 rounded-xl border border-cardborder">
             <span class="flex items-center gap-1">🏷️ With Hashtag</span>
-            <input type="checkbox" id="hashtag-toggle" checked onchange="updateCaptionDisplay()" class="accent-[#6B8E85] w-4 h-4 cursor-pointer">
+            <input type="checkbox" id="hashtag-toggle" checked onchange="updateCaptionDisplay()" class="accent-[#7C9DAB] w-4 h-4 cursor-pointer">
         </div>
 
         <!-- 文案展示框 -->
-        <div class="bg-[#12161A] border border-cardborder rounded-xl p-3.5 mb-3 text-xs text-[#E2E8F0] leading-relaxed min-h-[95px] flex items-center justify-center text-left" id="caption-box">
+        <div class="bg-[#F9F6F0] border border-cardborder rounded-xl p-3.5 mb-3 text-xs text-[#3A3845] leading-relaxed min-h-[95px] flex items-center justify-center text-left" id="caption-box">
             加载中...
         </div>
 
         <!-- 底部操作按钮 -->
         <div class="flex gap-2">
-            <button onclick="generateRandomCaption()" class="flex-1 bg-[#12161A] hover:bg-[#4A6B82]/30 text-[#E2E8F0] border border-[#4A6B82]/60 py-2 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1">
+            <button onclick="generateRandomCaption()" class="flex-1 bg-white hover:bg-[#7C9DAB]/10 text-[#3A3845] border border-[#7C9DAB]/40 py-2 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1 shadow-sm">
                 🔀 Random
             </button>
-            <button onclick="copyCaption()" class="flex-1 bg-[#C08285] hover:bg-[#a86e71] text-white py-2 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1 shadow-md">
+            <button onclick="copyCaption()" class="flex-1 bg-[#A084CA] hover:bg-[#8e72b8] text-white py-2 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1 shadow-sm">
                 📋 Copy
             </button>
         </div>
         
-        <div id="toast" class="hidden mt-2 text-center text-xs text-[#6B8E85] font-semibold">
+        <div id="toast" class="hidden mt-2 text-center text-xs text-[#7C9DAB] font-semibold">
             ✓ Copied to Clipboard!
         </div>
     </aside>
 
     <!-- 右下角浮动“恢复显示”按钮 -->
-    <button id="restore-caption-btn" onclick="toggleCaptionWidget()" class="hidden fixed bottom-6 right-6 bg-[#6B8E85] hover:bg-[#5a7971] text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-xl transition z-40">
+    <button id="restore-caption-btn" onclick="toggleCaptionWidget()" class="hidden fixed bottom-6 right-6 bg-[#7C9DAB] hover:bg-[#6b8c9a] text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-lg transition z-40">
         💬 Open Captions
     </button>
 
@@ -229,12 +229,12 @@
                 container.innerHTML = data.map(post => {
                     const isDone = completed.includes(post.id);
                     return `
-                        <div class="bg-cardbg border ${isDone ? 'border-[#6B8E85] bg-[#6B8E85]/10' : 'border-cardborder'} p-3.5 rounded-xl flex justify-between items-center transition">
-                            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg ${isDone ? 'bg-[#6B8E85] text-white' : 'bg-[#C08285] text-white'}">
+                        <div class="bg-cardbg border ${isDone ? 'border-[#7C9DAB] bg-[#7C9DAB]/10' : 'border-cardborder'} p-3.5 rounded-xl flex justify-between items-center transition shadow-sm">
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg ${isDone ? 'bg-[#7C9DAB] text-white' : 'bg-[#A084CA] text-white'}">
                                 ${isDone ? 'DONE ✓' : 'BOOST!'}
                             </span>
-                            <span class="text-sm font-medium text-[#E2E8F0] truncate mx-3 flex-1">${post.name}</span>
-                            <a href="${post.link}" target="_blank" onclick="markPostDone('${post.id}')" class="text-[#8C979E] hover:text-white p-1">
+                            <span class="text-sm font-medium text-[#3A3845] truncate mx-3 flex-1">${post.name}</span>
+                            <a href="${post.link}" target="_blank" onclick="markPostDone('${post.id}')" class="text-[#82808F] hover:text-[#3A3845] p-1">
                                 ↗
                             </a>
                         </div>
@@ -304,11 +304,11 @@
             if (!tabIG || !tabX) return;
             
             if (platform === 'IG') {
-                tabIG.className = "flex-1 py-1.5 text-xs bg-[#6B8E85] font-bold rounded-lg text-white transition";
-                tabX.className = "flex-1 py-1.5 text-xs text-[#8C979E] font-bold rounded-lg hover:text-white transition";
+                tabIG.className = "flex-1 py-1.5 text-xs bg-[#7C9DAB] font-bold rounded-lg text-white transition shadow-sm";
+                tabX.className = "flex-1 py-1.5 text-xs text-[#82808F] font-bold rounded-lg hover:text-[#3A3845] transition";
             } else {
-                tabX.className = "flex-1 py-1.5 text-xs bg-[#6B8E85] font-bold rounded-lg text-white transition";
-                tabIG.className = "flex-1 py-1.5 text-xs text-[#8C979E] font-bold rounded-lg hover:text-white transition";
+                tabX.className = "flex-1 py-1.5 text-xs bg-[#7C9DAB] font-bold rounded-lg text-white transition shadow-sm";
+                tabIG.className = "flex-1 py-1.5 text-xs text-[#82808F] font-bold rounded-lg hover:text-[#3A3845] transition";
             }
         }
 
@@ -320,11 +320,11 @@
             if (audio.paused) {
                 audio.play();
                 btn.innerHTML = '⏸️ Pause Music';
-                btn.classList.add('border-[#6B8E85]', 'text-[#6B8E85]');
+                btn.classList.add('border-[#7C9DAB]', 'text-[#7C9DAB]');
             } else {
                 audio.pause();
                 btn.innerHTML = '🎵 Play Music';
-                btn.classList.remove('border-[#6B8E85]', 'text-[#6B8E85]');
+                btn.classList.remove('border-[#7C9DAB]', 'text-[#7C9DAB]');
             }
         }
     </script>
