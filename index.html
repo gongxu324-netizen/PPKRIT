@@ -87,15 +87,9 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #A084CA;
         }
-
-        .tab-btn.active {
-            background-color: #7C9DAB;
-            color: #FFFFFF;
-            border-color: #7C9DAB;
-        }
     </style>
 </head>
-<body class="min-h-screen p-3 sm:p-6 relative pb-16 bg-cream overflow-x-hidden selection:bg-softpink/30">
+<body class="min-h-screen p-3 sm:p-6 relative pb-28 bg-cream overflow-x-hidden selection:bg-softpink/30">
 
     <!-- Top-Left Floating Decorative Bunny & Cloud -->
     <div class="fixed top-3 left-3 md:top-6 md:left-8 z-0 pointer-events-none opacity-80 animate-float hidden sm:block">
@@ -114,15 +108,36 @@
         </svg>
     </div>
 
+    <!-- Bottom-Left Decorative Bunny Resting on Pillows -->
+    <div class="fixed bottom-4 left-4 z-0 pointer-events-none opacity-85 animate-float-delayed hidden lg:block">
+        <svg width="130" height="110" viewBox="0 0 130 110" fill="none">
+            <rect x="20" y="55" width="90" height="40" rx="18" fill="#A084CA" opacity="0.25" stroke="#A084CA" stroke-width="2"/>
+            <circle cx="20" cy="75" r="4" fill="#A084CA"/>
+            <circle cx="110" cy="75" r="4" fill="#A084CA"/>
+            <ellipse cx="65" cy="52" rx="22" ry="18" fill="#FFFFFF" stroke="#3A3845" stroke-width="2"/>
+            <ellipse cx="48" cy="42" rx="10" ry="6" fill="#FFFFFF" stroke="#3A3845" stroke-width="2" transform="rotate(-20 48 42)"/>
+            <ellipse cx="48" cy="42" rx="7" ry="3" fill="#E8A0BF" transform="rotate(-20 48 42)"/>
+            <ellipse cx="80" cy="40" rx="10" ry="6" fill="#FFFFFF" stroke="#3A3845" stroke-width="2" transform="rotate(20 80 40)"/>
+            <ellipse cx="80" cy="40" rx="7" ry="3" fill="#E8A0BF" transform="rotate(20 80 40)"/>
+            <path d="M57 54 Q60 57 63 54" stroke="#3A3845" stroke-width="2" stroke-linecap="round"/>
+            <path d="M67 54 Q70 57 73 54" stroke="#3A3845" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="53" cy="57" r="3" fill="#E8A0BF" opacity="0.6"/>
+            <circle cx="77" cy="57" r="3" fill="#E8A0BF" opacity="0.6"/>
+            <text x="88" y="32" font-family="sans-serif" font-weight="bold" font-size="12" fill="#A084CA">Z</text>
+            <text x="96" y="22" font-family="sans-serif" font-weight="bold" font-size="10" fill="#A084CA">z</text>
+            <text x="102" y="14" font-family="sans-serif" font-weight="bold" font-size="8" fill="#A084CA">z</text>
+        </svg>
+    </div>
+
     <!-- Header Section -->
-    <header class="max-w-4xl mx-auto flex justify-between items-center mb-4 border-b-2 border-dashed border-[#EAE5D9] pb-3 relative z-10">
+    <header class="max-w-6xl mx-auto flex justify-between items-center mb-4 border-b-2 border-dashed border-[#EAE5D9] pb-3 relative z-10">
         <div class="flex items-center gap-2.5">
             <div class="p-2 bg-white rounded-2xl shadow-sm border border-cardborder flex items-center justify-center">
                 <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
                     <path d="M20 34 V 22" stroke="#7C9DAB" stroke-width="3" stroke-linecap="round"/>
                     <path d="M20 28 C 12 26, 10 32, 12 34" stroke="#7C9DAB" stroke-width="2.5" stroke-linecap="round" fill="none"/>
                     <path d="M20 26 C 28 24, 30 30, 28 32" stroke="#7C9DAB" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                    <path d="M12 14 C 12 22, 20 24, 20 24 C 20 24, 28 22, 28 14 C 28 10, 24 8, 12 10, 12 14 Z" fill="#E8A0BF" stroke="#3A3845" stroke-width="2"/>
+                    <path d="M12 14 C 12 22, 20 24, 20 24 C 20 24, 28 22, 28 14 C 28 10, 24 8, 20 12 C 16 8, 12 10, 12 14 Z" fill="#E8A0BF" stroke="#3A3845" stroke-width="2"/>
                 </svg>
             </div>
             <div>
@@ -141,75 +156,17 @@
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto space-y-5 relative z-10">
-
-        <!-- 新版：翻页式 Comment Generator -->
-        <section class="bg-white border-2 border-[#7C9DAB]/40 rounded-3xl p-4 sm:p-5 shadow-lg relative overflow-hidden">
-            <div class="flex justify-between items-center mb-3">
-                <div class="flex items-center gap-1.5 text-sm font-bold text-[#3A3845]">
-                    <span class="text-[#A084CA] text-base">🐇</span> 
-                    <span>GUCCI Milan FW Comment Generator</span>
-                </div>
-                <span class="text-[10px] bg-[#F7E398] text-[#3A3845] font-bold px-2.5 py-1 rounded-full border border-yellow-300">
-                    ✨ Tap Card to Copy
-                </span>
-            </div>
-
-            <!-- 分类 Tabs -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 mb-3 bg-[#F9F6F0] p-1.5 rounded-2xl border border-cardborder">
-                <button onclick="setGeneratorMode('onlyPP')" id="mode-onlyPP" class="tab-btn active py-1.5 text-xs font-bold rounded-xl border border-transparent transition text-center">
-                    🌟 ONLYPP
-                </button>
-                <button onclick="setGeneratorMode('bkpp')" id="mode-bkpp" class="tab-btn py-1.5 text-xs font-bold rounded-xl border border-transparent transition text-[#82808F] hover:text-[#3A3845] text-center">
-                    💖 BKPP
-                </button>
-                <button onclick="setGeneratorMode('departX')" id="mode-departX" class="tab-btn py-1.5 text-xs font-bold rounded-xl border border-transparent transition text-[#82808F] hover:text-[#3A3845] text-center">
-                    🛫 Depart / 𝕏
-                </button>
-                <button onclick="setGeneratorMode('x')" id="mode-x" class="tab-btn py-1.5 text-xs font-bold rounded-xl border border-transparent transition text-[#82808F] hover:text-[#3A3845] text-center">
-                    𝕏 X Mode
-                </button>
-            </div>
-
-            <!-- 翻页卡片核心区域 -->
-            <div id="card-display" onclick="copyCardContent()" class="bg-[#F9F6F0] border-2 border-dashed border-[#7C9DAB]/30 rounded-2xl p-4 sm:p-5 min-h-[120px] flex flex-col justify-between cursor-pointer hover:bg-white hover:border-[#7C9DAB] transition shadow-inner group relative">
-                <div class="flex justify-between items-center mb-2">
-                    <span id="card-index-label" class="text-[10px] font-bold text-[#82808F] bg-white px-2 py-0.5 rounded-md border border-cardborder">Card #1</span>
-                    <span id="card-tag-label" class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#E8A0BF]/20 text-[#E8A0BF]">SHORT</span>
-                </div>
-                <div id="card-text" class="text-xs sm:text-sm text-[#3A3845] font-medium leading-relaxed my-2 whitespace-pre-line group-hover:text-[#7C9DAB] transition">
-                    加载中...
-                </div>
-                <div class="text-right text-[10px] text-[#A084CA] font-bold mt-1 opacity-80">
-                    点击卡片复制文案 📋
-                </div>
-            </div>
-
-            <!-- 翻页控制按钮 -->
-            <div class="flex items-center justify-between gap-3 mt-3">
-                <button id="prev-btn" onclick="prevCard()" class="flex-1 bg-[#F9F6F0] hover:bg-[#7C9DAB] hover:text-white text-[#3A3845] border border-cardborder py-2 rounded-xl text-xs font-bold transition active:scale-95 disabled:opacity-30 disabled:pointer-events-none">
-                    ◀ Prev
-                </button>
-                <span id="page-indicator" class="text-xs font-bold text-[#A084CA] min-w-[50px] text-center">
-                    1 / 6
-                </span>
-                <button id="next-btn" onclick="nextCard()" class="flex-1 bg-[#F9F6F0] hover:bg-[#7C9DAB] hover:text-white text-[#3A3845] border border-cardborder py-2 rounded-xl text-xs font-bold transition active:scale-95 disabled:opacity-30 disabled:pointer-events-none">
-                    Next ▶
-                </button>
-            </div>
-
-            <button onclick="generateNewBatch()" class="w-full mt-2.5 bg-[#A084CA] hover:bg-[#8e72b8] text-white py-2 rounded-xl text-xs font-bold transition shadow-sm active:scale-98 flex items-center justify-center gap-1">
-                <span>🎲</span> Regenerate New Batch (重新刷新文案)
-            </button>
-
-            <!-- Toast 提示 -->
-            <div id="toast" class="hidden absolute bottom-3 left-1/2 -translate-x-1/2 text-xs text-white font-bold bg-[#7C9DAB] px-4 py-1.5 rounded-full shadow-lg border border-white animate-bounce pointer-events-none">
-                ✨ Copied to Clipboard!
-            </div>
-        </section>
+    <main class="max-w-6xl mx-auto space-y-5 lg:pr-88 relative z-10">
 
         <!-- Progress Counter Section -->
         <section class="bg-cardbg p-3.5 sm:p-4 rounded-2xl border-2 border-cardborder flex flex-col md:flex-row justify-between items-center gap-3 shadow-sm relative overflow-hidden">
+            <div class="absolute -right-2 -bottom-2 opacity-15 pointer-events-none">
+                <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
+                    <path d="M50 20 C 30 20, 15 35, 25 70 C 30 85, 50 95, 50 95 C 50 95, 70 85, 75 70 C 85 35, 70 20, 50 20 Z" fill="#E8A0BF"/>
+                    <path d="M40 22 C 45 10, 55 10, 60 22 C 55 25, 45 25, 40 22 Z" fill="#7C9DAB"/>
+                </svg>
+            </div>
+
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-[#F9F6F0] rounded-xl border border-[#EAE5D9] flex items-center justify-center shrink-0">
                     <svg width="32" height="32" viewBox="0 0 50 50" fill="none">
@@ -263,6 +220,16 @@
             </ol>
         </div>
 
+        <!-- Cute Dashed Divider with Bow -->
+        <div class="flex items-center justify-center my-3 gap-2">
+            <div class="h-0.5 flex-1 border-b-2 border-dashed border-[#EAE5D9]"></div>
+            <svg width="22" height="16" viewBox="0 0 30 22" fill="none">
+                <path d="M15 8 C 8 0, 0 4, 3 12 C 6 18, 13 12, 15 10 C 17 12, 24 18, 27 12 C 30 4, 22 0, 15 8 Z" fill="#E8A0BF" stroke="#3A3845" stroke-width="1.5"/>
+                <circle cx="15" cy="10" r="3" fill="#A084CA" stroke="#3A3845" stroke-width="1.5"/>
+            </svg>
+            <div class="h-0.5 flex-1 border-b-2 border-dashed border-[#EAE5D9]"></div>
+        </div>
+
         <!-- PP KRIT IG Section -->
         <section class="space-y-2">
             <div class="flex items-center justify-between">
@@ -271,34 +238,61 @@
                     <span>PP KRIT OFFICIAL IG</span>
                     <span class="text-[10px] text-[#82808F] font-normal font-sans">(Brand & Personal)</span>
                 </h3>
-                <span class="text-[10px] text-[#82808F]">🍓 Official Channel</span>
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] text-[#82808F]">🍓 Official Channel</span>
+                    <div id="pagination-brand" class="flex items-center gap-1"></div>
+                </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2" id="brand-posts"></div>
         </section>
 
-        <!-- NEW: Media & KOL (ONLYPP) Section -->
-        <section class="space-y-2">
-            <div class="flex items-center justify-between">
-                <h3 class="text-xs font-bold text-[#3A3845] uppercase tracking-wider flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-full border border-cardborder shadow-sm">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#7C9DAB] inline-block animate-pulse-slow"></span> 
-                    <span>Media & KOL — ONLYPP</span>
-                </h3>
-                <span class="text-[10px] text-[#82808F]">🌟 Solo Support</span>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2" id="media-onlypp-posts"></div>
-        </section>
+        <!-- Cute Dashed Divider with Heart -->
+        <div class="flex items-center justify-center my-3 gap-2">
+            <div class="h-0.5 flex-1 border-b-2 border-dashed border-[#EAE5D9]"></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#A084CA" stroke="#3A3845" stroke-width="1.5"/>
+            </svg>
+            <div class="h-0.5 flex-1 border-b-2 border-dashed border-[#EAE5D9]"></div>
+        </div>
 
-        <!-- NEW: Media & KOL (BKPP) Section -->
+        <!-- Media & KOL (ONLYPP) Section -->
         <section class="space-y-2">
             <div class="flex items-center justify-between">
                 <h3 class="text-xs font-bold text-[#3A3845] uppercase tracking-wider flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-full border border-cardborder shadow-sm">
                     <span class="w-2.5 h-2.5 rounded-full bg-[#E8A0BF] inline-block animate-pulse-slow"></span> 
-                    <span>Media & KOL — BKPP</span>
+                    <span>Media & KOL (ONLYPP)</span>
                 </h3>
-                <span class="text-[10px] text-[#82808F]">💖 Duo Support</span>
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] text-[#82808F]">🎀 High Priority</span>
+                    <div id="pagination-media_onlypp" class="flex items-center gap-1"></div>
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2" id="media-bkpp-posts"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2" id="media_onlypp-posts"></div>
         </section>
+
+        <!-- Media & KOL (BKPP) Section -->
+        <section class="space-y-2">
+            <div class="flex items-center justify-between">
+                <h3 class="text-xs font-bold text-[#3A3845] uppercase tracking-wider flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-full border border-cardborder shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#A084CA] inline-block animate-pulse-slow"></span> 
+                    <span>Media & KOL (BKPP)</span>
+                </h3>
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] text-[#82808F]">✨ Duo Coverage</span>
+                    <div id="pagination-media_bkpp" class="flex items-center gap-1"></div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2" id="media_bkpp-posts"></div>
+        </section>
+
+        <!-- Cute Dashed Divider with Star -->
+        <div class="flex items-center justify-center my-3 gap-2">
+            <div class="h-0.5 flex-1 border-b-2 border-dashed border-[#EAE5D9]"></div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#F7E398" stroke="#3A3845" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            <div class="h-0.5 flex-1 border-b-2 border-dashed border-[#EAE5D9]"></div>
+        </div>
 
         <!-- TIKTOK Section -->
         <section class="space-y-2">
@@ -307,10 +301,23 @@
                     <span class="w-2.5 h-2.5 rounded-full bg-[#E8A0BF] inline-block animate-pulse-slow"></span> 
                     <span>TIKTOK</span>
                 </h3>
-                <span class="text-[10px] text-[#82808F]">🎵 Viral Videos</span>
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] text-[#82808F]">🎵 Viral Videos</span>
+                    <div id="pagination-tiktok_posts" class="flex items-center gap-1"></div>
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2" id="tiktok-posts"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2" id="tiktok_posts-posts"></div>
         </section>
+
+        <!-- Cute Dashed Divider with Flower -->
+        <div class="flex items-center justify-center my-3 gap-2">
+            <div class="h-0.5 flex-1 border-b-2 border-dashed border-[#EAE5D9]"></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C9.5 2 7.5 4 7.5 6.5C7.5 7.5 7.8 8.4 8.3 9.1C6 9.6 4.5 11.6 4.5 14C4.5 16.8 6.7 19 9.5 19C10.5 19 11.4 18.7 12 18.2C12.6 18.7 13.5 19 14.5 19C17.3 19 19.5 16.8 19.5 14C19.5 11.6 18 9.6 15.7 9.1C16.2 8.4 16.5 7.5 16.5 6.5C16.5 4 14.5 2 12 2Z" fill="#7C9DAB" stroke="#3A3845" stroke-width="1.5"/>
+                <circle cx="12" cy="11" r="2" fill="#F7E398" stroke="#3A3845" stroke-width="1"/>
+            </svg>
+            <div class="h-0.5 flex-1 border-b-2 border-dashed border-[#EAE5D9]"></div>
+        </div>
 
         <!-- X (Twitter) Section -->
         <section class="space-y-2">
@@ -319,77 +326,134 @@
                     <span class="w-2.5 h-2.5 rounded-full bg-[#3A3845] inline-block animate-pulse-slow"></span> 
                     <span>X (Twitter)</span>
                 </h3>
-                <span class="text-[10px] text-[#82808F]">🐦 Trend Boosting</span>
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] text-[#82808F]">🐦 Trend Boosting</span>
+                    <div id="pagination-x_posts" class="flex items-center gap-1"></div>
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2" id="x-posts"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2" id="x_posts-posts"></div>
         </section>
 
     </main>
 
+    <!-- Floating Captions Box -->
+    <aside id="caption-widget" class="fixed top-4 right-4 sm:top-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-80 bg-white/95 backdrop-blur-md border-2 border-[#7C9DAB]/40 rounded-3xl p-4 shadow-xl z-50 transition-all duration-300">
+        <div class="absolute -top-3 left-6 bg-[#F7E398] border border-yellow-300 text-[#3A3845] text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
+            <span>✨ Comment Helper</span>
+        </div>
+
+        <div class="flex justify-between items-center mb-3 pt-1">
+            <div class="flex items-center gap-1.5 text-xs font-bold text-[#3A3845]">
+                <span class="text-[#A084CA] text-sm">🐇</span> GUCCI Milan FW Captions
+            </div>
+            <button onclick="toggleCaptionWidget()" class="text-[#82808F] hover:text-[#3A3845] bg-[#F9F6F0] hover:bg-[#EAE5D9] w-6 h-6 rounded-full flex items-center justify-center text-xs transition">✕</button>
+        </div>
+
+        <!-- Platform Tabs -->
+        <div class="flex gap-1 mb-3 bg-[#F9F6F0] p-1 rounded-2xl border border-cardborder">
+            <button id="tab-igtt" onclick="switchPlatform('IGTT')" class="flex-1 py-1.5 text-xs bg-[#7C9DAB] font-bold rounded-xl text-white transition shadow-sm flex items-center justify-center gap-1">
+                <span>📷/🎵</span> IG / TT
+            </button>
+            <button id="tab-x" onclick="switchPlatform('X')" class="flex-1 py-1.5 text-xs text-[#82808F] font-bold rounded-xl hover:text-[#3A3845] transition flex items-center justify-center gap-1">
+                <span>🐦</span> X
+            </button>
+        </div>
+
+        <!-- With Hashtag Toggle Switch -->
+        <div class="flex justify-between items-center mb-3 text-xs text-[#3A3845] bg-[#F9F6F0] p-2.5 rounded-2xl border border-cardborder">
+            <span class="flex items-center gap-1.5 font-medium">
+                <span class="text-[#E8A0BF]">🏷️</span> Include Hashtags
+            </span>
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="hashtag-toggle" onchange="updateCaptionDisplay()" class="sr-only peer">
+                <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#7C9DAB]"></div>
+            </label>
+        </div>
+
+        <!-- Dynamic Caption Output Box -->
+        <div class="bg-[#F9F6F0] border border-cardborder rounded-2xl p-3.5 mb-3 text-xs text-[#3A3845] leading-relaxed min-h-[100px] max-h-[160px] overflow-y-auto flex items-center justify-center text-left relative group selection:bg-[#E8A0BF]/30" id="caption-box">
+            加载中...
+        </div>
+
+        <!-- Bottom Action Controls -->
+        <div class="flex gap-2">
+            <button onclick="generateRandomCaption()" class="flex-1 bg-white hover:bg-[#7C9DAB]/10 text-[#3A3845] border-2 border-[#7C9DAB]/40 py-2.5 rounded-2xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm active:scale-95">
+                <span>🔀</span> Random
+            </button>
+            <button onclick="copyCaption()" class="flex-1 bg-[#A084CA] hover:bg-[#8e72b8] text-white py-2.5 rounded-2xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-md active:scale-95">
+                <span>📋</span> Copy
+            </button>
+        </div>
+        
+        <!-- Toast Notification -->
+        <div id="toast" class="hidden mt-2 text-center text-xs text-[#7C9DAB] font-bold bg-[#7C9DAB]/10 py-1.5 rounded-xl border border-[#7C9DAB]/30 animate-pulse">
+            ✨ Copied to Clipboard!
+        </div>
+    </aside>
+
+    <!-- Floating Restore Widget Button -->
+    <button id="restore-caption-btn" onclick="toggleCaptionWidget()" class="hidden fixed bottom-6 right-6 bg-[#7C9DAB] hover:bg-[#6b8c9a] text-white text-xs font-bold px-4 py-3 rounded-full shadow-lg transition-all z-40 flex items-center gap-2 border-2 border-white animate-bounce">
+        <span>💬</span>
+        <span>Open Captions</span>
+    </button>
+
     <script>
-        // 1. 原始数据配置
-        const rawMediaData = [          
-            { id: "m001", name:"Next stop: Milan. ✈️ ",link: " https://www.instagram.com/p/DdlzWBNnz8I/?stkn=MTRuYmdocThtajZpcg%3D%3D", likes: "32k", comments: "1532" },
-            { id: "m027", name:"mensfoliomy（onlypp）",link: "https://www.instagram.com/reel/DdqKxsjyOgb/"  },
-            { id: "m028", name:"ellementhailand（onlypp）",link: "https://www.instagram.com/p/DdqJrf-FMzL/?img_index=1"  },
-            { id: "m033", name:"ellethailandofficial（onlypp）",link: "https://www.instagram.com/p/DdqK5Vmgeos/?img_index=1"  },
-            { id: "m032", name:"wwdthailand（onlypp）",link: "https://www.instagram.com/p/DdqMEnaEylH/?img_index=1"  },                
-            { id: "m029", name:"praewmag（onlypp）",link: "https://www.instagram.com/p/DdqMccXkg_g/?img_index=1"  },
-            { id: "m030", name:"mintmag_th（onlypp）",link: "https://www.instagram.com/p/DdqMaKrTZQ4/"  },
-            { id: "m031", name:"mintmag_th2（onlypp）",link: "https://www.instagram.com/p/DdqMPDlE2bv/?img_index=1"  },
-            { id: "m024", name:"WWDTh（onlypp）",link: "https://www.instagram.com/reel/DdpwzwSp2pd/?stkn=Mm9qZnZsNHpmcHp1"  },
-            { id: "m025", name:"vogueth（onlypp）",link: "https://www.instagram.com/reels/DdpxQxdvpm0/"  },
-            { id: "m026", name:"vogueth（BKPP）",link: "https://www.instagram.com/p/Ddp3D1rj5_B/?img_index=1"  },
-            { id: "m015", name:"wwdthailand（onlypp）",link: "https://www.instagram.com/p/DdnQzVKE7S5/?stkn=MXM4Njk3M2NsMXBrcA%3D%3D",likes: "10k", comments: "673" },
-            { id: "m004", name:"mensfolio（onlypp）",link: " https://www.instagram.com/p/DdmCbHMmDeI/?img_index=1",likes: "19k", comments: "731" },  
-            { id: "m010", name:"Mensfoliomy（onlypp）",link: " https://www.instagram.com/p/DdmEWWUEgeV/?img_index=1",likes: "8829", comments: "733" },
-            { id: "m018", name:"fabmagazineth",link: "  https://www.instagram.com/p/DdnT70yJ1-3/"  },        
-            { id: "m012", name:"mint",link:" https://www.instagram.com/p/DdnQ3NQE7Cw/?img_index=5&stkn=bmVvamd6dXN0dWMx"  },
-            { id: "m013", name:"bazzarth（BKPP）",link: "https://www.instagram.com/p/DdnQk7LkyA1/?stkn=enFtOWdhMTNwNmlh"  },
-            { id: "m014", name:"vogueth（BKPP）",link: "https://www.instagram.com/p/DdnQn1dD99m/?stkn=NnYxMHhjcW45c2Rj"  },
-            { id: "m015_2", name:"ellethailandofficial（BKPP）",link: "https://www.instagram.com/p/DdiDvRxyeD3/?utm_source=ig_web_copy_link&stkn=NTc4MTIwNjQ2YQ%3D%3D"  },
-            { id: "m017", name:"ellementh（BKPP）",link: "https://www.instagram.com/p/DdnSMjkEjF2/?img_index=1"  },   
-            { id: "m016", name:"lofficielmy（BKPP）",link: "https://www.instagram.com/p/DdmWgoeH0LK/?utm_source=ig_web_copy_link&stkn=NTc4MTIwNjQ2YQ%3D%3D"  },
-            { id: "m019", name:"tatlerth（BKPP）",link: "https://www.instagram.com/p/DdnUp6REw1X/?img_index=2&stkn=MTV5Mm05N3Jia3ZhYg%3D%3D"  },
-            { id: "m020", name:"esquirethai（BKPP）",link: "https://www.instagram.com/p/DdnSyPkk9H8/?img_index=1"  },
-            { id: "m021", name:"luxematters.th（BKPP）",link: "https://www.instagram.com/p/DdnSyK-E2MZ/?img_index=1"  },            
-            { id: "m022", name:"emporium_emquartier",link: "https://www.instagram.com/p/DdndK7PI88D/?img_index=1"  },
-            { id: "m023", name:"kullastreemag（BKPP）",link: "https://www.instagram.com/p/DdnkGnrCVcX/?img_index=1"  },
-            { id: "m011", name:"marieclairetw",link: "https://www.instagram.com/p/DdlVj0EDx1x/?stkn=NXV1OWo3dWVib3h6" },
-            { id: "m002", name:"daradaily",link: " https://www.instagram.com/p/Ddl5rarDV2J/?stkn=aWVqMmRrcGE3dHVs" },
-            { id: "m003", name:"grazia.sg",link: " https://www.instagram.com/p/Ddl9Rw5AUg2/?img_index=6&stkn=MXd3bGw4eHNpMWppaQ%3D%3D" },                             
-            { id: "m006", name:"Styledailyhk",link: "  https://www.instagram.com/reel/DdmBixrTV0e/?stkn=MTRvdGVjNjduaGIzYQ==" }             
-        ];
-
-        // 自动拆分为 ONLYPP 和 BKPP 两组
-        const mediaOnlyPP = rawMediaData.filter(item => !item.name.includes("BKPP"));
-        const mediaBKPP = rawMediaData.filter(item => item.name.includes("BKPP"));
-
+        // 1. 数据配置区 (拆分为 media_onlypp 和 media_bkpp)
         const postsData = {
             brand: [
                 { id: "pp003", name: "🖼️（NEW）", link: "https://www.instagram.com/p/DdqDTukCPbK/?img_index=1" , likes: "85k", comments: "2756" },   
                 { id: "pp002", name: "🚃（NEW）", link: "https://www.instagram.com/p/DdpUE08ysFK/", likes: "161k", comments: "8669" },        
                 { id: "pp001", name: "Ciao 🙂‍↔️", link: "https://www.instagram.com/pp.kritt/p/Ddly5Nlgdz9/", likes: "292k", comments: "21k" }           
             ],
-            mediaOnlyPP: mediaOnlyPP,
-            mediaBKPP: mediaBKPP,
+            media_onlypp: [          
+                { id: "m001", name:"Next stop: Milan. ✈️ ",link: " https://www.instagram.com/p/DdlzWBNnz8I/?stkn=MTRuYmdocThtajZpcg%3D%3D", likes: "32k", comments: "1532" },
+                { id: "m027", name:"mensfoliomy（onlypp）",link: "https://www.instagram.com/reel/DdqKxsjyOgb/"  },
+                { id: "m028", name:"ellementhailand（onlypp）",link: "https://www.instagram.com/p/DdqJrf-FMzL/?img_index=1"  },
+                { id: "m033", name:"ellethailandofficial（onlypp）",link: "https://www.instagram.com/p/DdqK5Vmgeos/?img_index=1"  },
+                { id: "m032", name:"wwdthailand（onlypp）",link: "https://www.instagram.com/p/DdqMEnaEylH/?img_index=1"  },                
+                { id: "m029", name:"praewmag（onlypp）",link: "https://www.instagram.com/p/DdqMccXkg_g/?img_index=1"  },
+                { id: "m030", name:"mintmag_th（onlypp）",link: "https://www.instagram.com/p/DdqMaKrTZQ4/"  },
+                { id: "m031", name:"mintmag_th2（onlypp）",link: "https://www.instagram.com/p/DdqMPDlE2bv/?img_index=1"  },
+                { id: "m024", name:"WWDTh（onlypp）",link: "https://www.instagram.com/reel/DdpwzwSp2pd/?stkn=Mm9qZnZsNHpmcHp1"  },
+                { id: "m025", name:"vogueth（onlypp）",link: "https://www.instagram.com/reels/DdpxQxdvpm0/"  },
+                { id: "m015", name:"wwdthailand（onlypp）",link: "https://www.instagram.com/p/DdnQzVKE7S5/?stkn=MXM4Njk3M2NsMXBrcA%3D%3D",likes: "10k", comments: "673" },
+                { id: "m004", name:"mensfolio（onlypp）",link: " https://www.instagram.com/p/DdmCbHMmDeI/?img_index=1",likes: "19k", comments: "731" },  
+                { id: "m010", name:"Mensfoliomy（onlypp）",link: " https://www.instagram.com/p/DdmEWWUEgeV/?img_index=1",likes: "8829", comments: "733" },
+                { id: "m018", name:"fabmagazineth",link: "  https://www.instagram.com/p/DdnT70yJ1-3/"  },        
+                { id: "m012", name:"mint",link:" https://www.instagram.com/p/DdnQ3NQE7Cw/?img_index=5&stkn=bmVvamd6dXN0dWMx"  },
+                { id: "m011", name:"marieclairetw",link: "https://www.instagram.com/p/DdlVj0EDx1x/?stkn=NXV1OWo3dWVib3h6" },
+                { id: "m002", name:"daradaily",link: " https://www.instagram.com/p/Ddl5rarDV2J/?stkn=aWVqMmRrcGE3dHVs" },
+                { id: "m003", name:"grazia.sg",link: " https://www.instagram.com/p/Ddl9Rw5AUg2/?img_index=6&stkn=MXd3bGw4eHNpMWppaQ%3D%3D" },                             
+                { id: "m006", name:"Styledailyhk",link: "  https://www.instagram.com/reel/DdmBixrTV0e/?stkn=MTRvdGVjNjduaGIzYQ==" }             
+            ],
+            media_bkpp: [
+                { id: "m026", name:"vogueth（BKPP）",link: "https://www.instagram.com/p/Ddp3D1rj5_B/?img_index=1"  },
+                { id: "m013", name:"bazzarth（BKPP）",link: "https://www.instagram.com/p/DdnQk7LkyA1/?stkn=enFtOWdhMTNwNmlh"  },
+                { id: "m014", name:"vogueth（BKPP）",link: "https://www.instagram.com/p/DdnQn1dD99m/?stkn=NnYxMHhjcW45c2Rj"  },
+                { id: "m015_2", name:"ellethailandofficial（BKPP）",link: "https://www.instagram.com/p/DdiDvRxyeD3/?utm_source=ig_web_copy_link&stkn=NTc4MTIwNjQ2YQ%3D%3D"  },
+                { id: "m017", name:"ellementh（BKPP）",link: "https://www.instagram.com/p/DdnSMjkEjF2/?img_index=1"  },   
+                { id: "m016", name:"lofficielmy（BKPP）",link: "https://www.instagram.com/p/DdmWgoeH0LK/?utm_source=ig_web_copy_link&stkn=NTc4MTIwNjQ2YQ%3D%3D"  },
+                { id: "m019", name:"tatlerth（BKPP）",link: "https://www.instagram.com/p/DdnUp6REw1X/?img_index=2&stkn=MTV5Mm05N3Jia3ZhYg%3D%3D"  },
+                { id: "m020", name:"esquirethai（BKPP）",link: "https://www.instagram.com/p/DdnSyPkk9H8/?img_index=1"  },
+                { id: "m021", name:"luxematters.th（BKPP）",link: "https://www.instagram.com/p/DdnSyK-E2MZ/?img_index=1"  },            
+                { id: "m022", name:"emporium_emquartier",link: "https://www.instagram.com/p/DdndK7PI88D/?img_index=1"  },
+                { id: "m023", name:"kullastreemag（BKPP）",link: "https://www.instagram.com/p/DdnkGnrCVcX/?img_index=1"  }
+            ],
             tiktok_posts: [
                 { id: "tk001", name: "pp ent", link: "https://vt.tiktok.com/ZSbevor7a/" },
-                { id: "tk002", name: "WWDth（NEW✨）", link: "https://vt.tiktok.com/ZSbdDuugC/" },
-                { id: "tk003", name: "vogueth（NEW✨）", link: "https://vt.tiktok.com/ZSbdUNbQB/" },
-                { id: "tk1", name: "PPKrit x GUCCI", link: "https://vt.tiktok.com/ZSqKmbs8Y/" }
+                { id: "tk002", name: "WWDth", link: "https://vt.tiktok.com/ZSbdDuugC/" },
+                { id: "tk003", name: "vogueth", link: "https://vt.tiktok.com/ZSbdUNbQB/" },
+                { id: "tk1", name: "PP Krit x GUCCI TikTok", link: "https://vt.tiktok.com/ZSqKmbs8Y/" }
             ],
             x_posts: [
                 { id: "x000", name: "GUCCI-OFFICIAL", link: "https://x.com/gucci/status/2102413529479536691?s=46" },
-                { id: "x043", name: "GUCCI JAPAN（NEW✨）", link: "https://x.com/gucci_jp/status/2103016586802274454?s=46" },            
-                { id: "x028", name: "PPENT（NEW✨）", link: "https://x.com/PPKrit_Ent/status/2103007539193606263" },
-                { id: "x038", name: "PPENT（NEW✨）", link: "https://x.com/PPKrit_Ent/status/2103007502975820143" },
-                { id: "x036", name: "PPENT（NEW✨）", link: "https://x.com/PPKrit_Ent/status/2103007421035942054" },
-                { id: "x039", name: "PPENT（NEW✨）", link: "https://x.com/PPKrit_Ent/status/2103007350596735416" },
-                { id: "x035", name: "PPENT（NEW✨）", link: "https://x.com/ppkrit_ent/status/2102883208954310996?s=46" },
-                { id: "x040", name: "PPENT（NEW✨）", link: "https://x.com/ppkrit_ent/status/2103007350596735416?s=46" },
-                { id: "x041", name: "PPENT（NEW✨）", link: "https://x.com/ppkrit_ent/status/2103007502975820143?s=46" },
-                { id: "x042", name: "esquireth（NEW✨）", link: "https://x.com/esquire_th/status/2103012598581207441?s=46" },
+                { id: "x028", name: "PPENT（NEW）", link: "https://x.com/PPKrit_Ent/status/2103007539193606263" },
+                { id: "x038", name: "PPENT（NEW）", link: "https://x.com/PPKrit_Ent/status/2103007502975820143" },
+                { id: "x036", name: "PPENT（NEW）", link: "https://x.com/PPKrit_Ent/status/2103007421035942054" },
+                { id: "x039", name: "PPENT（NEW）", link: "https://x.com/PPKrit_Ent/status/2103007350596735416" },
+                { id: "x035", name: "PPENT（NEW）", link: "https://x.com/ppkrit_ent/status/2102883208954310996?s=46" },
+                { id: "x040", name: "PPENT（NEW）", link: "https://x.com/ppkrit_ent/status/2103007350596735416?s=46" },
+                { id: "x041", name: "PPENT（NEW）", link: "https://x.com/ppkrit_ent/status/2103007502975820143?s=46" },
                 { id: "x033", name: "bazaarthailand（onlypp）", link: "https://x.com/bazaarthailand/status/2103010497021071469?s=46" },
                 { id: "x031", name: "ellethailand（onlypp）", link: "https://x.com/ellethailand/status/2103000037487993139?s=46" },
                 { id: "x034", name: "ellethailand（onlypp）", link: "https://x.com/ellementhailand/status/2103004774736244836?s=46" }, 
@@ -432,151 +496,135 @@
             ]
         };
 
-        // 2. 文案生成数据库 (Generator DB)
-        const DATA_ONLYPP = {
-            SHORT: [
-                "So excited to see PP Krit in GUCCI at Milan! ✨",
-                "Nobody wears GUCCI quite like PP Krit. 💖",
-                "Can't wait for PP Krit's iconic look in GUCCI. 🔥",
-                "Milan is officially ready for PP Krit x GUCCI. 👑",
-                "PP Krit's proportions and taste in GUCCI are elite. 🌟",
-                "Counting down the hours to see PP Krit in GUCCI. 💫"
+        // 记录各区域当前页码，每页固定展示 6 条（2列x3行）
+        const PAGE_SIZE = 6;
+        const currentPageState = {
+            brand: 1,
+            media_onlypp: 1,
+            media_bkpp: 1,
+            tiktok_posts: 1,
+            x_posts: 1
+        };
+
+        // 2. Hashtags
+        const targetHashtags = "#PPKRITxGUCCIMFW26 #GUCCISS27xPPKRIT #GucciTheStoreShow #Gucci #PPKritt #MFW @gucci @ppkritt";
+        
+        // 3. 评论词库
+        const captionTemplates = {
+            shorts: [
+                "PPKRIT x GUCCI is pure magic! ✨",
+                "The ultimate GUCCI Brand Ambassador, PPKRIT! 💖",
+                "PPKRIT owned Milan Fashion Week! 🔥",
+                "Demna and PPKRIT, what an iconic duo! 💫",
+                "So proud of PPKRIT for GUCCI! 🌹",
+                "PPKRIT is the main event! 👑",
+                "Absolute perfection from PPKRIT in GUCCI! 🎨",
+                "Fashion icon PPKRIT shines again! 🌟"
             ],
-            MEDIUM: [
-                "Can't wait to see PP Krit light up the GUCCI showcase in Milan with his stunning presence. ✨",
-                "PP Krit's incredible physique and refined taste make every GUCCI look unforgettable. 💖",
-                "As GUCCI's Brand Ambassador, PP Krit is about to deliver another masterclass in high fashion. 👑"
+            m_openings: [
+                "Absolute perfection! 💖",
+                "Can't get over this look! ✨",
+                "So proud of our boy 🌷",
+                "Pure luxury and style! 💫",
+                "Serving pure visual excellence! 🌟"
             ],
-            LONG: [
-                "Absolute perfection! PP Krit as GUCCI Brand Ambassador delivers unmatched high fashion energy. Always proud of you! ✨",
-                "The style and elegance are completely unmatched! PP Krit commanding the fashion stage for GUCCI with pure luxury and style. 💕"
+            m_bodies: [
+                "PPKRIT as GUCCI Brand Ambassador delivers unmatched high fashion energy",
+                "PP Krit representing GUCCI in Milan completely stole the show",
+                "PPKRIT's bond with Demna and the GUCCI family is so beautiful",
+                "PPKRIT proves his incredible influence in the fashion world again",
+                "The connection between PPKRIT and Demna is truly iconic"
+            ],
+            m_closings: [
+                "Nobody does it like him! 🔥",
+                "Always proud of you! ✨",
+                "Forever supporting PPKRIT! 💖",
+                "Keep shining fashion icon! 🌟",
+                "So well deserved! 🌸"
+            ],
+            l_openings: [
+                "An absolute fashion masterpiece! 🎨",
+                "The style and elegance are completely unmatched! ✨",
+                "Iconic moment that will go down in fashion history! 🔥"
+            ],
+            l_identities: [
+                "PPKRIT shining so bright as GUCCI's Brand Ambassador",
+                "PP Krit commanding the fashion stage for GUCCI"
+            ],
+            l_relations: [
+                "with his special bond and mutual respect with Demna,",
+                "surrounded by love from Demna and the GUCCI team,"
+            ],
+            l_performances: [
+                "he effortlessly proves his status as a true fashion powerhouse.",
+                "he delivers pure perfection and redefines modern luxury."
+            ],
+            l_feelings: [
+                "Every single detail of this look is breathtaking.",
+                "Truly born to be a superstar in the high fashion world."
+            ],
+            l_closings: [
+                "Love you so much, keep shining! 💕",
+                "Can't wait to see what comes next! 🚀"
             ]
         };
 
-        const DATA_BKPP = {
-            SHORT: [
-                "BKPP in Milan for GUCCI is a dream come true! ✨",
-                "Double the charisma! So excited for BKPP x GUCCI. 💖",
-                "BKPP bringing top-tier fashion energy to Milan in GUCCI. 🔥",
-                "The power duo BKPP taking over GUCCI Milan! 👑"
-            ],
-            MEDIUM: [
-                "So thrilled to see BKPP together in Milan representing GUCCI with unmatched style and charm. 💖",
-                "BKPP's chemistry and high-fashion taste in GUCCI are going to completely steal the show in Milan! ✨"
-            ],
-            LONG: [
-                "An absolute fashion masterpiece! The excitement is doubled as BKPP prepares for GUCCI Milan, setting new standards for fashion week pairs! 💕"
-            ]
+        let currentRawText = "";
+        let currentPlatform = "IGTT";
+
+        // Initialize Application
+        window.onload = function() {
+            renderPosts();
+            updateProgress();
+            switchPlatform('IGTT');
         };
 
-        const DATA_DEPART = {
-            SHORT: [
-                "PP Krit is Milan-bound in GUCCI — so excited! ✈️",
-                "Airport chic at its peak: PP Krit in GUCCI. ✨",
-                "Front row bound: PP Krit looking gorgeous in GUCCI. 💖"
-            ],
-            MEDIUM: [
-                "PP Krit is Milan-bound in GUCCI — the excitement for the show is building fast! ✨",
-                "Even at the airport, PP Krit's model proportions and GUCCI style set the bar high! 🔥"
-            ],
-            LONG: [
-                "With PP Krit officially en route to Milan in GUCCI, his travel styling has everyone counting down. Proving that style starts well before the runway! ✈️✨"
-            ]
-        };
+        function generateRandomCaption() {
+            const rand = arr => arr[Math.floor(Math.random() * arr.length)];
+            const typeChance = Math.random();
+            let result = "";
 
-        const X_TAGS = "#PPKRITxGUCCIMFW26\n#GUCCISS27xPPKRIT\n#GucciTheStoreShow\n#Gucci #PPKritt #MFW\n@gucci @ppkritt";
-
-        // 生成器状态控制
-        let currentGeneratorMode = "onlyPP";
-        let currentBatch = [];
-        let currentCardIndex = 0;
-        const TOTAL_CARDS = 6;
-
-        function setGeneratorMode(mode) {
-            currentGeneratorMode = mode;
-            ['onlyPP', 'bkpp', 'departX', 'x'].forEach(m => {
-                const btn = document.getElementById(`mode-${m}`);
-                if (btn) {
-                    if (m === mode) {
-                        btn.className = "tab-btn active py-1.5 text-xs font-bold rounded-xl border border-transparent transition text-center";
-                    } else {
-                        btn.className = "tab-btn py-1.5 text-xs font-bold rounded-xl border border-transparent transition text-[#82808F] hover:text-[#3A3845] text-center";
-                    }
-                }
-            });
-            generateNewBatch();
-        }
-
-        function generateOneItem() {
-            let pool = DATA_ONLYPP;
-            if (currentGeneratorMode === "bkpp") pool = DATA_BKPP;
-            if (currentGeneratorMode === "departX") pool = DATA_DEPART;
-
-            const r = Math.random();
-            const pick = arr => arr[Math.floor(Math.random() * arr.length)];
-            let tag = "SHORT";
-            let text = "";
-
-            if (r < 0.4) {
-                tag = "SHORT";
-                text = pick(pool.SHORT);
-            } else if (r < 0.75) {
-                tag = "MEDIUM";
-                text = pick(pool.MEDIUM);
+            if (typeChance < 0.3) {
+                result = rand(captionTemplates.shorts);
+            } else if (typeChance < 0.7) {
+                const open = rand(captionTemplates.m_openings);
+                const body = rand(captionTemplates.m_bodies);
+                const close = rand(captionTemplates.m_closings);
+                result = `${open} ${body}. ${close}`;
             } else {
-                tag = "LONG";
-                text = pick(pool.LONG);
+                const open = rand(captionTemplates.l_openings);
+                const id = rand(captionTemplates.l_identities);
+                const rel = rand(captionTemplates.l_relations);
+                const perf = rand(captionTemplates.l_performances);
+                const feel = rand(captionTemplates.l_feelings);
+                const close = rand(captionTemplates.l_closings);
+                result = `${open} ${id}, ${rel} ${perf} ${feel} ${close}`;
             }
 
-            if (currentGeneratorMode === "x" || currentGeneratorMode === "departX") {
-                text += "\n\n" + X_TAGS;
+            currentRawText = result;
+            updateCaptionDisplay();
+        }
+
+        function updateCaptionDisplay() {
+            const hashtagCheckbox = document.getElementById('hashtag-toggle');
+            const withHashtag = hashtagCheckbox ? hashtagCheckbox.checked : false;
+            let finalText = currentRawText;
+
+            if (withHashtag) {
+                finalText += "\n\n" + targetHashtags;
             }
 
-            return { tag, text };
-        }
-
-        function generateNewBatch() {
-            currentBatch = [];
-            for (let i = 0; i < TOTAL_CARDS; i++) {
-                currentBatch.push(generateOneItem());
-            }
-            currentCardIndex = 0;
-            renderCard();
-        }
-
-        function renderCard() {
-            const item = currentBatch[currentCardIndex];
-            document.getElementById('card-index-label').innerText = `Card #${currentCardIndex + 1}`;
-            
-            const tagEl = document.getElementById('card-tag-label');
-            tagEl.innerText = item.tag;
-            if (item.tag === 'SHORT') tagEl.className = "text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#7C9DAB]/20 text-[#7C9DAB]";
-            else if (item.tag === 'MEDIUM') tagEl.className = "text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#F7E398] text-[#3A3845]";
-            else tagEl.className = "text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#E8A0BF]/20 text-[#E8A0BF]";
-
-            document.getElementById('card-text').innerText = item.text;
-            document.getElementById('page-indicator').innerText = `${currentCardIndex + 1} / ${TOTAL_CARDS}`;
-
-            document.getElementById('prev-btn').disabled = (currentCardIndex === 0);
-            document.getElementById('next-btn').disabled = (currentCardIndex === TOTAL_CARDS - 1);
-        }
-
-        function prevCard() {
-            if (currentCardIndex > 0) {
-                currentCardIndex--;
-                renderCard();
+            const captionBox = document.getElementById('caption-box');
+            if (captionBox) {
+                captionBox.innerText = finalText;
             }
         }
 
-        function nextCard() {
-            if (currentCardIndex < TOTAL_CARDS - 1) {
-                currentCardIndex++;
-                renderCard();
-            }
-        }
+        function copyCaption() {
+            const captionBox = document.getElementById('caption-box');
+            if (!captionBox) return;
 
-        function copyCardContent() {
-            const textToCopy = currentBatch[currentCardIndex].text;
+            const textToCopy = captionBox.innerText;
             const textArea = document.createElement("textarea");
             textArea.value = textToCopy;
             document.body.appendChild(textArea);
@@ -596,31 +644,58 @@
             const toast = document.getElementById('toast');
             if (toast) {
                 toast.classList.remove('hidden');
-                setTimeout(() => toast.classList.add('hidden'), 1500);
+                setTimeout(() => toast.classList.add('hidden'), 2200);
             }
         }
 
-        // 绑定键盘左右箭头快捷键
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "ArrowLeft") prevCard();
-            if (e.key === "ArrowRight") nextCard();
-        });
+        // 切换页码控制
+        function changePage(key, delta) {
+            const data = postsData[key] || [];
+            const totalPages = Math.ceil(data.length / PAGE_SIZE) || 1;
+            const newPage = currentPageState[key] + delta;
+            
+            if (newPage >= 1 && newPage <= totalPages) {
+                currentPageState[key] = newPage;
+                renderPosts();
+            }
+        }
 
-        // 3. 打卡列表与数据渲染
-        window.onload = function() {
-            generateNewBatch();
-            renderPosts();
-            updateProgress();
-        };
+        // 渲染分页控件
+        function renderPaginationControls(key, dataLength) {
+            const container = document.getElementById(`pagination-${key}`);
+            if (!container) return;
 
+            const totalPages = Math.ceil(dataLength / PAGE_SIZE) || 1;
+            const page = currentPageState[key];
+
+            if (totalPages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+
+            container.innerHTML = `
+                <button onclick="changePage('${key}', -1)" ${page === 1 ? 'disabled' : ''} class="w-6 h-6 rounded-lg border border-cardborder bg-white text-xs font-bold flex items-center justify-center text-[#3A3845] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#F9F6F0] transition shadow-sm">‹</button>
+                <span class="text-[10px] font-bold text-[#82808F] px-1">${page}/${totalPages}</span>
+                <button onclick="changePage('${key}', 1)" ${page === totalPages ? 'disabled' : ''} class="w-6 h-6 rounded-lg border border-cardborder bg-white text-xs font-bold flex items-center justify-center text-[#3A3845] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#F9F6F0] transition shadow-sm">›</button>
+            `;
+        }
+
+        // 渲染卡片列表
         function renderPosts() {
             const completed = getCompletedPosts();
             
-            const renderList = (data, containerId, isIgSection = false) => {
-                const container = document.getElementById(containerId);
+            const renderList = (key, isIgSection = false) => {
+                const data = postsData[key] || [];
+                const container = document.getElementById(`${key}-posts`);
                 if (!container) return;
                 
-                container.innerHTML = data.map(post => {
+                renderPaginationControls(key, data.length);
+
+                const page = currentPageState[key] || 1;
+                const startIndex = (page - 1) * PAGE_SIZE;
+                const paginatedData = data.slice(startIndex, startIndex + PAGE_SIZE);
+
+                container.innerHTML = paginatedData.map(post => {
                     const isDone = completed.includes(post.id);
 
                     const statsHtml = (isIgSection && (post.likes || post.comments)) ? `
@@ -649,11 +724,11 @@
                 }).join('');
             };
 
-            renderList(postsData.brand, 'brand-posts', true);
-            renderList(postsData.mediaOnlyPP, 'media-onlypp-posts', true);
-            renderList(postsData.mediaBKPP, 'media-bkpp-posts', true);
-            renderList(postsData.tiktok_posts, 'tiktok-posts', false);
-            renderList(postsData.x_posts, 'x-posts', false);
+            renderList('brand', true);
+            renderList('media_onlypp', true);
+            renderList('media_bkpp', true);
+            renderList('tiktok_posts', false);
+            renderList('x_posts', false);
         }
 
         function getCompletedPosts() {
@@ -686,11 +761,45 @@
 
         function updateProgress() {
             const completed = getCompletedPosts();
-            const total = postsData.brand.length + postsData.mediaOnlyPP.length + postsData.mediaBKPP.length + postsData.x_posts.length + postsData.tiktok_posts.length;
+            const total = postsData.brand.length + postsData.media_onlypp.length + postsData.media_bkpp.length + postsData.x_posts.length + postsData.tiktok_posts.length;
             const el = document.getElementById('progress-text');
             if (el) {
                 el.innerText = completed.length + " / " + total;
             }
+        }
+
+        function toggleCaptionWidget() {
+            const widget = document.getElementById('caption-widget');
+            const restoreBtn = document.getElementById('restore-caption-btn');
+            if (widget && restoreBtn) {
+                const isHidden = widget.classList.contains('hidden');
+                if (isHidden) {
+                    widget.classList.remove('hidden');
+                    restoreBtn.classList.add('hidden');
+                } else {
+                    widget.classList.add('hidden');
+                    restoreBtn.classList.remove('hidden');
+                }
+            }
+        }
+
+        function switchPlatform(platform) {
+            currentPlatform = platform;
+            const tabIGTT = document.getElementById('tab-igtt');
+            const tabX = document.getElementById('tab-x');
+            const hashtagCheckbox = document.getElementById('hashtag-toggle');
+            if (!tabIGTT || !tabX) return;
+            
+            if (platform === 'IGTT') {
+                tabIGTT.className = "flex-1 py-1.5 text-xs bg-[#7C9DAB] font-bold rounded-xl text-white transition shadow-sm flex items-center justify-center gap-1";
+                tabX.className = "flex-1 py-1.5 text-xs text-[#82808F] font-bold rounded-xl hover:text-[#3A3845] transition flex items-center justify-center gap-1";
+                if (hashtagCheckbox) hashtagCheckbox.checked = false;
+            } else {
+                tabX.className = "flex-1 py-1.5 text-xs bg-[#7C9DAB] font-bold rounded-xl text-white transition shadow-sm flex items-center justify-center gap-1";
+                tabIGTT.className = "flex-1 py-1.5 text-xs text-[#82808F] font-bold rounded-xl hover:text-[#3A3845] transition flex items-center justify-center gap-1";
+                if (hashtagCheckbox) hashtagCheckbox.checked = true;
+            }
+            generateRandomCaption();
         }
     </script>
 </body>
