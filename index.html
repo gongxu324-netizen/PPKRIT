@@ -207,7 +207,8 @@
 
 <script>
 const DB = {
-  NAMES: ["PP Krit"],
+  // Strictly locked name
+  NAME: "PP Krit",
   BRAND_IG: ["GUCCI", "Gucci"],
   BRAND_X: ["GUCCI", "Gucci", "@gucci"],
   MFW_VARIANTS: ["MFW", "Milan Fashion Week", "MFW26"],
@@ -281,7 +282,7 @@ function buildGrammarText(isX, styleType) {
   const brandPool = isX ? DB.BRAND_X : DB.BRAND_IG;
   const brand = pick(brandPool);
   const mfw = pick(DB.MFW_VARIANTS);
-  const name = pick(DB.NAMES);
+  const name = DB.NAME; // Strictly locked to "PP Krit"
   
   let styleGroup, styleName;
   if (styleType === 0) {
@@ -308,8 +309,11 @@ function buildGrammarText(isX, styleType) {
     sentence = `${brand} x ${name} at ${mfw} is insane, ${phrase}! ${ending}`;
   }
 
+  // If Slang style applies lowercasing, protect "PP Krit" from being lowercased
   if (styleType === 0 && Math.random() < 0.35) {
-    sentence = sentence.toLowerCase();
+    sentence = sentence.replace(/PP Krit/g, "PP_KRIT_TOKEN")
+                       .toLowerCase()
+                       .replace(/pp_krit_token/g, "PP Krit");
   }
 
   sentence = insertEmojiSafely(sentence);
@@ -356,7 +360,7 @@ function render() {
     card.className = "card";
     
     const highlighted = item.text
-      .replace(/PP Krit/gi, m => `<b>${m}</b>`)
+      .replace(/PP Krit/g, m => `<b>${m}</b>`)
       .replace(/@?GUCCI|Gucci/g, m => `<b>${m}</b>`)
       .replace(/MFW\d*|Milan Fashion Week/gi, m => `<b>${m}</b>`);
 
