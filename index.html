@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PP Krit × GUCCI — Anti-Bot MFW Compliment Generator</title>
+<title>PP Krit × GUCCI — Anti-Bot MFW Compliment Generator (50k+ Edition)</title>
 <style>
   * {
     margin: 0;
@@ -176,7 +176,7 @@
 <body>
 <div class="container">
   <h1>✨ PP Krit × GUCCI — Anti-Bot Generator ✨</h1>
-  <p class="subtitle">Click card to copy. Natural humanized text to avoid spam detection.</p>
+  <p class="subtitle">Gen-Z Trend Compliment Engine (1,000,000+ Combinations)</p>
   
   <div class="tabs">
     <div class="tab active" id="tab1" data-mode="pre-ig">beforetheshow(IG/TT)</div>
@@ -192,61 +192,51 @@
 <div class="toast" id="toast">Copied to Clipboard ✓</div>
 
 <script>
-const WORDS = {
-  PRE_INTROS: [
-    "Honestly, nobody does it like", "So ready for", "Counting down every minute to see",
-    "The way", "Can't get over how amazing", "Beyond thrilled to witness",
-    "The energy is crazy for", "Always captivated by", "Looking so effortlessly sleek,"
+// ===== 1,000,000+ 极高随机度与网感词库架构 =====
+const DB = {
+  PRE_STARTERS: [
+    "Honestly", "No because", "Wait,", "Obsessed with how", "Can we talk about", 
+    "Literally", "Excuse me but", "OMG,", "So real,", "Just non-stop thinking about"
   ],
-  ON_INTROS: [
-    "Unreal visuals from", "Serving absolute royalty,", "Front row spotlight belongs to",
-    "Pure perfection as always,", "The fashion world is talking about", "Standing out effortlessly,",
-    "Breathtaking posture and charm from", "Press photos look unreal for"
+  ON_STARTERS: [
+    "Ate and left no crumbs,", "Serving absolute face,", "Unreal visuals from", 
+    "Main character energy from", "No thoughts head empty just", "Front row royalty,", 
+    "The camera truly loves", "Literally stopped scrolling for", "Breathtaking as always,"
   ],
-  BRAND_VARIANTS_IG: ["GUCCI", "Gucci"],
-  BRAND_VARIANTS_X: ["GUCCI", "Gucci", "@gucci"],
-  
-  PRE_DETAILS: [
-    "representing {brand} with such high class",
-    "bringing incredible airport style and prestige to {brand}",
-    "showing off perfect proportions in head-to-toe {brand}",
-    "blending classic elegance with modern edge for {brand}",
-    "proving why this Brand Ambassador status with {brand} is so iconic"
+  NAMES: ["PP Krit", "PP Krit"],
+  BRAND_IG: ["GUCCI", "Gucci"],
+  BRAND_X: ["GUCCI", "Gucci", "@gucci"],
+  MFW_VARIANTS: ["MFW", "Milan Fashion Week", "MFW26", "Milan Fashion Week"],
+
+  PRE_VERBS: [
+    "is absolutely rocking", "is born to represent", "is serving pure luxury in", 
+    "just effortlessly slays in", "is making head-to-toe", "looks insanely good wearing"
   ],
-  ON_DETAILS: [
-    "owning the front row at {brand}'s showcase",
-    "delivering flawless unedited press photos in custom {brand}",
-    "captivating every camera lens at the {brand} event",
-    "showing absolute poise, regal posture, and magnetism for {brand}",
-    "stealing the entire spotlight at the {brand} presentation"
+  ON_VERBS: [
+    "is commanding the whole room in", "is taking over my feed in", 
+    "is owning the front row in", "is giving high fashion perfection in", 
+    "is making press cameras crazy in", "is turning heads everywhere in"
   ],
-  OUTROS: [
-    "for {mfw}.", "at {mfw} this season.", "during {mfw}!", 
-    "— truly on another level for {mfw}.", "and the global buzz is real!"
+
+  SLANG_DESCRIPTIONS: [
+    "with that unreal charisma", "with maximum main character vibe", 
+    "looking like a literal fashion icon", "serving elite proportions and poise", 
+    "with such an effortless high-fashion aura", "and the fit is absolutely top-tier", 
+    "and he's literally eating this look up"
   ],
-  
-  SHORT_PRE: [
-    "{name} in {brand} is already the highlight of {mfw}.",
-    "So proud of {name} representing {brand} with such grace at {mfw}.",
-    "Immaculate vibes and top-tier style: {name} x {brand} for {mfw}.",
-    "Airport fashion masterclass by {name} in {brand} for {mfw}!",
-    "Nobody wears {brand} quite like {name}. So excited for {mfw}."
+
+  ENDINGS: [
+    "for {mfw}.", "at {mfw} period!", "during {mfw} and I'm here for it.", 
+    "— fashion week belongs to him!", "at {mfw}, zero notes.", "at {mfw}, it's unmatched!"
   ],
-  SHORT_ON: [
-    "{name} front row for {brand} at {mfw} is pure perfection.",
-    "Unedited photos prove {name}'s unreal visuals in {brand} at {mfw}!",
-    "The absolute main event of {mfw}: {name} at {brand}.",
-    "Flawless posture, elegance, and charm — {name} in {brand} at {mfw}.",
-    "Media cameras are fully locked on {name} at {brand} {mfw}!"
-  ]
+
+  // 黑心 🖤、白心 🤍、紫心 💜 及夸赞 Emoji
+  EMOJIS: ["🖤", "🤍", "💜", "✨", "🔥", "👑", "🌟", "💫", "👏", "🥂"]
 };
 
 const X_TAGS = "#GUCCISS27xPPKRIT #GucciTheStoreShow #Gucci #PPKritt #MFW\n@gucci @ppkritt";
 const X_LIMIT = 280;
 const PAGE_SIZE = 8;
-
-// 包含了黑心 🖤、白心 🤍、紫心 💜 及其他精选符号
-const EMOJIS = ["🖤", "🤍", "💜", "✨", "🔥", "👑", "🌟", "💫", "👏", "🥂"];
 
 const list = document.getElementById("list");
 const toast = document.getElementById("toast");
@@ -255,81 +245,73 @@ let currentMode = "pre-ig";
 
 const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 
-// 确保 Emoji 绝不出现在开头，可以出现在句中或句尾
+// 严禁在开头出现 Emoji 的安全插入算法
 function insertEmojiSafely(text) {
-  if (Math.random() < 0.3) return text; // 30% 概率不加 Emoji
+  if (Math.random() < 0.25) return text; // 25% 概率保持净纯文字
   
-  const e = pick(EMOJIS);
+  const e = pick(DB.EMOJIS);
   const words = text.split(" ");
   
-  // 如果只有一个单词或句尾模式，直接加在末尾
-  if (words.length <= 3 || Math.random() < 0.6) {
+  if (words.length <= 3 || Math.random() < 0.65) {
     return text + " " + e;
   }
   
-  // 随机插入在句中（排除第0个位置，防止出现在开头）
+  // 插入在第 1 个单词之后（绝不插入在开头 [0]）
   const pos = Math.floor(Math.random() * (words.length - 2)) + 1;
   words[pos] = words[pos] + " " + e;
   return words.join(" ");
 }
 
-function buildText(isPre, isX) {
-  const brandPool = isX ? WORDS.BRAND_VARIANTS_X : WORDS.BRAND_VARIANTS_IG;
+function buildGrammarText(isPre, isX) {
+  const brandPool = isX ? DB.BRAND_X : DB.BRAND_IG;
   const brand = pick(brandPool);
-  const mfw = Math.random() < 0.55 ? "MFW" : "Milan Fashion Week";
-  const name = "PP Krit";
+  const mfw = pick(DB.MFW_VARIANTS);
+  const name = pick(DB.NAMES);
   
-  const r = Math.random();
-  let rawText = "";
-  let tag = "medium";
+  const starter = pick(isPre ? DB.PRE_STARTERS : DB.ON_STARTERS);
+  const verb = pick(isPre ? DB.PRE_VERBS : DB.ON_VERBS);
+  const slang = pick(DB.SLANG_DESCRIPTIONS);
+  const ending = pick(DB.ENDINGS).replace("{mfw}", mfw);
 
-  if (r < 0.35) {
-    tag = "short";
-    const pool = isPre ? WORDS.SHORT_PRE : WORDS.SHORT_ON;
-    rawText = pick(pool);
-  } else if (r < 0.75) {
-    tag = "medium";
-    const intro = pick(isPre ? WORDS.PRE_INTROS : WORDS.ON_INTROS);
-    const detail = pick(isPre ? WORDS.PRE_DETAILS : WORDS.ON_DETAILS);
-    const outro = pick(WORDS.OUTROS);
-    rawText = `${intro} ${name} ${detail} ${outro}`;
+  let sentence = "";
+  const structureType = Math.floor(Math.random() * 3);
+
+  if (structureType === 0) {
+    // 结构 A: Starter + Name + Verb + Brand + Slang + Ending
+    sentence = `${starter} ${name} ${verb} ${brand} ${slang} ${ending}`;
+  } else if (structureType === 1) {
+    // 结构 B: Name + Verb + Brand + Starter + Slang + Ending
+    sentence = `${name} ${verb} ${brand}, ${starter.toLowerCase()} ${slang} ${ending}`;
   } else {
-    tag = "long";
-    const intro = pick(isPre ? WORDS.PRE_INTROS : WORDS.ON_INTROS);
-    const detail = pick(isPre ? WORDS.PRE_DETAILS : WORDS.ON_DETAILS);
-    const extra = isPre 
-      ? "The media attention and style literacy are completely unmatched"
-      : "The front row interactions, posture, and aura are creating massive global discussion";
-    rawText = `${intro} ${name} ${detail}. ${extra} at {mfw}!`;
+    // 结构 C: Starter + Brand + x + Name + Slang + Ending
+    sentence = `${starter} ${brand} x ${name} ${slang} ${ending}`;
   }
 
-  let filled = rawText.replace(/\{name\}/g, name)
-                      .replace(/\{brand\}/g, brand)
-                      .replace(/\{mfw\}/g, mfw);
-
-  if (!/PP Krit/i.test(filled)) filled = "PP Krit — " + filled;
-  if (!/GUCCI|Gucci/i.test(filled)) filled += " in GUCCI";
-  if (!/MFW|Milan Fashion Week/i.test(filled)) filled += " at MFW";
-
-  if (Math.random() < 0.5) {
-    const punc = pick(["!", " ~", "...", "!!"]);
-    filled = filled.replace(/(\.|\!|)$/, punc);
+  // 标点随机化
+  if (Math.random() < 0.4) {
+    sentence = sentence.replace(/(\.|\!|)$/, pick(["!!", " ~", "...", "!"]));
   }
 
-  // 安全插入 Emoji (防止开头出现)
-  filled = insertEmojiSafely(filled);
+  // 安全插入 Emoji (绝对不在开头)
+  sentence = insertEmojiSafely(sentence);
+
+  // X 模式检测与拼接
+  let tag = "medium";
+  if (sentence.length > 120) tag = "long";
+  if (sentence.length < 60) tag = "short";
 
   if (isX) {
-    const fullX = filled + "\n\n" + X_TAGS;
+    const fullX = sentence + "\n\n" + X_TAGS;
     if (fullX.length <= X_LIMIT) {
-      filled = fullX;
+      sentence = fullX;
     } else {
-      filled = insertEmojiSafely(`${name} in ${brand} serving elite style for ${mfw}!`) + `\n\n${X_TAGS}`;
+      // 超长削减兜底
+      sentence = insertEmojiSafely(`${name} in ${brand} is ate and left no crumbs at ${mfw}!`) + `\n\n${X_TAGS}`;
       tag = "short";
     }
   }
 
-  return { text: filled, tag: tag };
+  return { text: sentence, tag: tag };
 }
 
 function getBatch() {
@@ -339,9 +321,9 @@ function getBatch() {
   const seen = new Set();
   let guard = 0;
 
-  while (results.length < PAGE_SIZE && guard < 300) {
+  while (results.length < PAGE_SIZE && guard < 400) {
     guard++;
-    const item = buildText(isPre, isX);
+    const item = buildGrammarText(isPre, isX);
     if (seen.has(item.text)) continue;
     seen.add(item.text);
     results.push(item);
@@ -359,7 +341,7 @@ function render() {
     const highlighted = item.text
       .replace(/PP Krit/gi, m => `<b>${m}</b>`)
       .replace(/@?GUCCI|Gucci/g, m => `<b>${m}</b>`)
-      .replace(/MFW|Milan Fashion Week/g, m => `<b>${m}</b>`);
+      .replace(/MFW\d*|Milan Fashion Week/gi, m => `<b>${m}</b>`);
 
     card.innerHTML = `
       <div class="card-header">
