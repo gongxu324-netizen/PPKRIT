@@ -234,7 +234,8 @@ const DB = {
   EMOJIS: ["🖤", "🤍", "💜", "✨", "🔥", "👑", "🌟", "💫", "👏", "🥂"]
 };
 
-const X_TAGS = "#GUCCISS27xPPKRIT #GucciTheStoreShow #Gucci #PPKritt #MFW\n@gucci @ppkritt";
+// 指定的 X 标签 4 行排列格式
+const X_TAGS = "#GUCCISS27xPPKRIT\n#GucciTheStoreShow\n#Gucci #PPKritt #MFW\n@gucci @ppkritt";
 const X_LIMIT = 280;
 const PAGE_SIZE = 8;
 
@@ -277,13 +278,10 @@ function buildGrammarText(isPre, isX) {
   const structureType = Math.floor(Math.random() * 3);
 
   if (structureType === 0) {
-    // 结构 A: Starter + Name + Verb + Brand + Slang + Ending
     sentence = `${starter} ${name} ${verb} ${brand} ${slang} ${ending}`;
   } else if (structureType === 1) {
-    // 结构 B: Name + Verb + Brand + Starter + Slang + Ending
     sentence = `${name} ${verb} ${brand}, ${starter.toLowerCase()} ${slang} ${ending}`;
   } else {
-    // 结构 C: Starter + Brand + x + Name + Slang + Ending
     sentence = `${starter} ${brand} x ${name} ${slang} ${ending}`;
   }
 
