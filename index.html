@@ -21,51 +21,46 @@
   }
   .container {
     width: 100%;
-    max-width: 640px;
+    max-width: 560px;
   }
   h1 {
     color: #dfc892;
     text-align: center;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
     letter-spacing: 0.5px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   .subtitle {
     color: rgba(255, 255, 255, 0.55);
     text-align: center;
     font-size: 11px;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     line-height: 1.4;
   }
   
-  /* 4 Tabs Layout */
+  /* 固定两行布局 (每行2个) */
   .tabs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 16px;
   }
-  @media (min-width: 520px) {
-    .tabs {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
   .tab {
-    padding: 8px 6px;
+    padding: 10px 8px;
     text-align: center;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.05);
     color: rgba(255, 255, 255, 0.65);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
     border: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    white-space: nowrap;
   }
   .tab:hover {
     background: rgba(255, 255, 255, 0.09);
@@ -76,31 +71,26 @@
     border-color: rgba(223, 200, 146, 0.4);
     font-weight: 600;
   }
-  .tab .sub {
-    font-size: 9px;
-    opacity: 0.6;
-    margin-top: 2px;
-  }
 
   .stats {
     color: rgba(223, 200, 146, 0.7);
     text-align: center;
-    font-size: 10px;
+    font-size: 11px;
     margin-bottom: 12px;
   }
   .btn {
     display: block;
     width: 100%;
-    padding: 9px;
+    padding: 10px;
     background: #dfc892;
     color: #121513;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     letter-spacing: 0.3px;
   }
   .btn:hover {
@@ -190,43 +180,29 @@
     transform: translateX(-50%) translateY(0);
   }
 </style>
-<base target="_blank">
 </head>
 <body>
 <div class="container">
   <h1>✨ PP Krit × GUCCI — Milan Fashion Week ✨</h1>
-  <p class="subtitle">Select tab & click any card to copy text.<br>Compliment Generator for PP Krit at MFW.</p>
+  <p class="subtitle">Select tab & click any card to copy text.</p>
   
   <div class="tabs">
-    <div class="tab active" id="tabPreIG" data-mode="pre-ig">
-      beforetheshow(IG/TT)
-      <span class="sub">Pre-Show Style</span>
-    </div>
-    <div class="tab" id="tabPreX" data-mode="pre-x">
-      beforetheshow(X)
-      <span class="sub">Pre-Show + Tags</span>
-    </div>
-    <div class="tab" id="tabOnIG" data-mode="on-ig">
-      ontheshow(IG/TT)
-      <span class="sub">Showtime Glow</span>
-    </div>
-    <div class="tab" id="tabOnX" data-mode="on-x">
-      ontheshow(X)
-      <span class="sub">Showtime + Tags</span>
-    </div>
+    <div class="tab active" id="tab1" data-mode="pre-ig">beforetheshow(IG/TT)</div>
+    <div class="tab" id="tab2" data-mode="pre-x">beforetheshow(X)</div>
+    <div class="tab" id="tab3" data-mode="on-ig">ontheshow(IG/TT)</div>
+    <div class="tab" id="tab4" data-mode="on-x">ontheshow( (X)</div>
   </div>
 
   <p class="stats" id="stats"></p>
-  <button class="btn" id="refreshBtn">🎲 Generate New Batch (8 Items)</button>
+  <button class="btn" id="refreshBtn">🎲 Refresh (8 Items)</button>
   <div id="list"></div>
 </div>
 
 <div class="toast" id="toast">Copied to Clipboard ✓</div>
 
 <script>
-// ===== TEXT POOLS =====
 const DATA = {
-  PRE_SHOW: {
+  PRE: {
     SHORT: [
       "So thrilled to see {name} representing {brand} for {mfw}!",
       "Airport style icon: {name} in {brand} is absolute perfection.",
@@ -253,24 +229,21 @@ const DATA = {
       "The excitement is building as {name} prepares for {brand} at {mfw}",
       "Setting the standard for luxury airport fashion, {name} in {brand}",
       "Fashion outlets and media are all focused on {name}'s arrival in {brand}",
-      "With unmatched charm and elite proportions, {name} for {brand}",
-      "There is no doubt that {name}'s partnership with {brand} at {mfw}"
+      "With unmatched charm and elite proportions, {name} for {brand}"
     ],
     CORES: [
       "brings incredible sophistication and charisma to {brand}'s {mfw} presence",
       "proves once again why he is the ideal Global Ambassador for {brand}",
       "serves high-fashion attitude and flawless style in head-to-toe {brand}",
-      "captivates fashion critics with his unique poise and expressiveness in {brand} at {mfw}",
-      "defines modern luxury with his glowing aura and effortless {brand} styling"
+      "captivates fashion critics with his unique poise and expressiveness in {brand} at {mfw}"
     ],
     CLOSERS: [
       "and we are fully eager for what is coming next.",
       "establishing another iconic chapter with {brand} at {mfw}.",
-      "making this fashion week truly unforgettable.",
-      "and the global anticipation is unreal."
+      "making this fashion week truly unforgettable."
     ]
   },
-  ON_SHOW: {
+  ON: {
     SHORT: [
       "Absolute perfection! {name} attending {brand} showcase at {mfw}.",
       "HQ unedited photos proving {name}'s flawless visuals in {brand}!",
@@ -295,21 +268,18 @@ const DATA = {
       "Commanding the front row at {brand}'s showcase, {name}",
       "Lighting up the press line at {mfw}, {name} in {brand}",
       "With breathtaking confidence and stunning posture, {name} at {brand}",
-      "International media coverage is buzzing as {name} represents {brand} at {mfw}",
-      "Proving his status in the global fashion scene, {name} in {brand}"
+      "International media coverage is buzzing as {name} represents {brand} at {mfw}"
     ],
     CORES: [
       "delivers a masterclass in front row elegance for {brand} at {mfw}",
       "captures every camera with his exquisite aura and flawless presence in {brand}",
       "defines high fashion nobility with his regal posture at {brand}'s presentation",
-      "generates incredible global discussion with his iconic {brand} look at {mfw}",
-      "shines brightly through raw press pictures and global media lenses for {brand}"
+      "generates incredible global discussion with his iconic {brand} look at {mfw}"
     ],
     CLOSERS: [
       "and the reaction worldwide is completely deserved.",
       "solidifying his fashion authority at {mfw}.",
-      "creating a moment that everyone is talking about.",
-      "and he truly owned the entire showcase."
+      "creating a moment that everyone is talking about."
     ]
   }
 };
@@ -321,7 +291,6 @@ const BRAND_VARIANTS_X = ["GUCCI", "Gucci", "@gucci"];
 const X_TAGS = "#GUCCISS27xPPKRIT #GucciTheStoreShow #Gucci #PPKritt #MFW\n@gucci @ppkritt";
 const X_LIMIT = 280;
 const PAGE_SIZE = 8;
-
 const EMOJIS = ["✨", "🔥", "👑", "🤍", "🖤", "🌟", "💫", "👏", "🥂"];
 
 const list = document.getElementById("list");
@@ -331,8 +300,7 @@ let currentMode = "pre-ig";
 
 const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 
-// Ensure mandatory words
-function ensureKeywords(text, forceMFW = false) {
+function ensureKeywords(text, forceMFW) {
   let result = text;
   if (!/PP Krit|PPKRIT/i.test(result)) {
     result = "PP Krit — " + result;
@@ -347,9 +315,8 @@ function ensureKeywords(text, forceMFW = false) {
 }
 
 function maybeEmoji(t) {
-  if (Math.random() < 0.4) return t;
-  const e = pick(EMOJIS);
-  return t + " " + e;
+  if (Math.random() < 0.35) return t;
+  return t + " " + pick(EMOJIS);
 }
 
 function fillTemplate(t, isX, forceMFW) {
@@ -364,19 +331,16 @@ function fillTemplate(t, isX, forceMFW) {
 function generateOne(mode) {
   const isPre = mode.startsWith("pre");
   const isX = mode.endsWith("-x");
-  const pool = isPre ? DATA.PRE_SHOW : DATA.ON_SHOW;
-  
-  // Rule: At least 50% chance to explicitly include MFW
-  const forceMFW = Math.random() < 0.6;
+  const pool = isPre ? DATA.PRE : DATA.ON;
+  const forceMFW = Math.random() < 0.55;
   
   const r = Math.random();
   let item = {};
   
-  // Ratio: Short 45%, Medium 40%, Long 15%
   if (r < 0.45) {
     item.tag = "short";
     item.text = fillTemplate(pick(pool.SHORT), isX, forceMFW);
-  } else if (r < 0.85) {
+  } else if (r < 0.80) {
     item.tag = "medium";
     item.text = fillTemplate(pick(pool.MEDIUM), isX, forceMFW);
   } else {
@@ -392,9 +356,8 @@ function generateOne(mode) {
     if (fullXText.length <= X_LIMIT) {
       item.text = fullXText;
     } else {
-      // Fallback to short if exceeded limit
       const fallback = fillTemplate(pick(pool.SHORT), isX, true);
-      item.text = fallback + "\n\n" + X_TAGS;
+      item.text = maybeEmoji(fallback) + "\n\n" + X_TAGS;
       item.tag = "short";
     }
   }
@@ -416,11 +379,6 @@ function getBatch() {
   return results;
 }
 
-function updateStats() {
-  const statsEl = document.getElementById("stats");
-  statsEl.textContent = `Displaying ${PAGE_SIZE} tailored compliments per refresh. Fully compliant with length & keyword rules.`;
-}
-
 function render() {
   list.innerHTML = "";
   const items = getBatch();
@@ -428,7 +386,6 @@ function render() {
     const card = document.createElement("div");
     card.className = "card";
     
-    // Highlight keywords
     const highlighted = item.text
       .replace(/PP Krit|PPKRIT/g, m => `<b>${m}</b>`)
       .replace(/@?GUCCI|Gucci/g, m => `<b>${m}</b>`)
@@ -483,8 +440,6 @@ document.querySelectorAll(".tab").forEach(tab => {
   });
 });
 
-// Initial load
-updateStats();
 render();
 </script>
 </body>
