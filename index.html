@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PP Krit × GUCCI — Anti-Bot MFW Compliment Generator (50k+ Edition)</title>
+<title>PP Krit × GUCCI — Ultra-Natural Compliment Engine</title>
 <style>
   * {
     margin: 0;
@@ -175,8 +175,8 @@
 </head>
 <body>
 <div class="container">
-  <h1>✨ PP Krit × GUCCI — Anti-Bot Generator ✨</h1>
-  <p class="subtitle">Gen-Z Trend Compliment Engine (1,000,000+ Combinations)</p>
+  <h1>✨ PP Krit × GUCCI — Anti-Bot Engine ✨</h1>
+  <p class="subtitle">Ultra-Natural Oral Compliment Generator (1,000,000+ Variations)</p>
   
   <div class="tabs">
     <div class="tab active" id="tab1" data-mode="pre-ig">beforetheshow(IG/TT)</div>
@@ -192,45 +192,59 @@
 <div class="toast" id="toast">Copied to Clipboard ✓</div>
 
 <script>
-// ===== 1,000,000+ 极高随机度与网感词库架构 =====
+// ===== 高度口语化、真人粉感词库 =====
 const DB = {
+  // 口语语气词 & 句首
   PRE_STARTERS: [
-    "Honestly", "No because", "Wait,", "Obsessed with how", "Can we talk about", 
-    "Literally", "Excuse me but", "OMG,", "So real,", "Just non-stop thinking about"
+    "nah fr", "bro", "wait wait wait,", "literally crying,", "cannot handle this,", 
+    "ok but like,", "omg guys,", "lowkey obsessed with", "no because why is", 
+    "excuse me???", "brb dying,", "screaming because", "honestly"
   ],
   ON_STARTERS: [
-    "Ate and left no crumbs,", "Serving absolute face,", "Unreal visuals from", 
-    "Main character energy from", "No thoughts head empty just", "Front row royalty,", 
-    "The camera truly loves", "Literally stopped scrolling for", "Breathtaking as always,"
+    "he ate so hard,", "serving elite face card,", "absolute main character energy from", 
+    "front row royalty fr,", "the visual is insane,", "unreal proportions from", 
+    "literally took my breath away,", "im lost for words,", "how is he even real,",
+    "sculpted by gods fr,"
   ],
+
   NAMES: ["PP Krit"],
   BRAND_IG: ["GUCCI", "Gucci"],
   BRAND_X: ["GUCCI", "Gucci", "@gucci"],
-  MFW_VARIANTS: ["MFW", "Milan Fashion Week", "MFW26", "Milan Fashion Week"],
+  MFW_VARIANTS: ["MFW", "Milan Fashion Week", "MFW26"],
 
+  // 动词与动作（口语化短句）
   PRE_VERBS: [
-    "is absolutely rocking", "is born to represent", "is serving pure luxury in", 
-    "just effortlessly slays in", "is making head-to-toe", "looks insanely good wearing"
+    "looks insanely good in", "is totally rocking", "was born to wear", 
+    "slays so hard in", "is serving pure luxury in", "pulled up in full"
   ],
   ON_VERBS: [
-    "is commanding the whole room in", "is taking over my feed in", 
-    "is owning the front row in", "is giving high fashion perfection in", 
-    "is making press cameras crazy in", "is turning heads everywhere in"
+    "is owning the front row in", "is making everyone stare in", 
+    "is literally taking over my timeline in", "is giving unreal high fashion in", 
+    "is commanding the whole room in", "is glowing so bright in"
   ],
 
-  SLANG_DESCRIPTIONS: [
-    "with that unreal charisma", "with maximum main character vibe", 
-    "looking like a literal fashion icon", "serving elite proportions and poise", 
-    "with such an effortless high-fashion aura", "and the fit is absolutely top-tier", 
-    "and he's literally eating this look up"
+  // 外貌、气质、身材口语表达
+  BEAUTY_SLANG: [
+    "that face card is never declining",
+    "the silhouette and those proportions are crazy",
+    "that effortless elegance is unmatched",
+    "he looks like a literal runway model",
+    "that waist line and stature is insane",
+    "his aura and glow are just on another level",
+    "serving pure class and insane visuals",
+    "literally a walking sculpture",
+    "that handsome face with high fashion poise",
+    "body line, face, and style are all 10/10"
   ],
 
+  // 口语收尾
   ENDINGS: [
-    "for {mfw}.", "at {mfw} period!", "during {mfw} and I'm here for it.", 
-    "— fashion week belongs to him!", "at {mfw}, zero notes.", "at {mfw}, it's unmatched!"
+    "period!", "im obsessed.", "no words needed.", 
+    "fashion week is his now.", "zero notes!", "im crying fr.", 
+    "he really did that!", "pure perfection."
   ],
 
-  // 黑心 🖤、白心 🤍、紫心 💜 及夸赞 Emoji
+  // 夸赞及各色爱心 Emoji
   EMOJIS: ["🖤", "🤍", "💜", "✨", "🔥", "👑", "🌟", "💫", "👏", "🥂"]
 };
 
@@ -246,12 +260,12 @@ let currentMode = "pre-ig";
 
 const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 
-// 核心增强：保护关键词不被 Emoji 切断（PP Krit / GUCCI / Gucci 等均被视为单个不可拆分 Token）
+// 核心安全算法：保护关键词绝对不被打断
 function insertEmojiSafely(text) {
-  const count = Math.floor(Math.random() * 5); // 随机生成 0, 1, 2, 3, 4 个
+  const count = Math.floor(Math.random() * 5); // 随机生成 0~4 个 Emoji
   if (count === 0) return text;
 
-  // 使用占位符将关键短语保护起来，避免按空格分割时把 "PP" 和 "Krit" 切开
+  // 将主词和账号 Tag 替换为不可分割的占位 Token
   let safeText = text
     .replace(/PP Krit/g, "PP_KRIT_TOKEN")
     .replace(/@gucci/gi, "AT_GUCCI_TOKEN")
@@ -261,7 +275,7 @@ function insertEmojiSafely(text) {
 
   for (let i = 0; i < count; i++) {
     const e = pick(DB.EMOJIS);
-    // 65% 概率拼在句尾，35% 概率插在词汇之间（跳过 index 0 保证绝对不在开头）
+    // 65% 概率拼在句尾，35% 概率插在非首词的中间
     if (tokens.length <= 2 || Math.random() < 0.65) {
       tokens.push(e);
     } else {
@@ -270,13 +284,14 @@ function insertEmojiSafely(text) {
     }
   }
 
-  // 还原保护的关键词
+  // 还原真实词汇
   return tokens.join(" ")
     .replace(/PP_KRIT_TOKEN/g, "PP Krit")
     .replace(/AT_GUCCI_TOKEN/g, "@gucci")
     .replace(/AT_PPKRITT_TOKEN/g, "@ppkritt");
 }
 
+// 增强的多句式口语构建逻辑
 function buildGrammarText(isPre, isX) {
   const brandPool = isX ? DB.BRAND_X : DB.BRAND_IG;
   const brand = pick(brandPool);
@@ -285,29 +300,36 @@ function buildGrammarText(isPre, isX) {
   
   const starter = pick(isPre ? DB.PRE_STARTERS : DB.ON_STARTERS);
   const verb = pick(isPre ? DB.PRE_VERBS : DB.ON_VERBS);
-  const slang = pick(DB.SLANG_DESCRIPTIONS);
-  const ending = pick(DB.ENDINGS).replace("{mfw}", mfw);
+  const beauty = pick(DB.BEAUTY_SLANG);
+  const ending = pick(DB.ENDINGS);
 
   let sentence = "";
-  const structureType = Math.floor(Math.random() * 3);
+  const structureType = Math.floor(Math.random() * 4);
 
+  // 4 种截然不同的真实网友表达句型
   if (structureType === 0) {
-    sentence = `${starter} ${name} ${verb} ${brand} ${slang} ${ending}`;
+    // 结构 A: [Starter] [Name] [Verb] [Brand] at [MFW], [Beauty] - [Ending]
+    sentence = `${starter} ${name} ${verb} ${brand} at ${mfw}, ${beauty} - ${ending}`;
   } else if (structureType === 1) {
-    sentence = `${name} ${verb} ${brand}, ${starter.toLowerCase()} ${slang} ${ending}`;
+    // 结构 B: [Name] in [Brand] at [MFW]... [Beauty]!! [Ending]
+    sentence = `${name} in ${brand} at ${mfw}... ${beauty}! ${ending}`;
+  } else if (structureType === 2) {
+    // 结构 C: [Starter] how [Name] x [Brand] is giving [Beauty] at ${mfw}
+    sentence = `${starter} how ${name} x ${brand} is giving ${beauty} at ${mfw}, ${ending}`;
   } else {
-    sentence = `${starter} ${brand} x ${name} ${slang} ${ending}`;
+    // 结构 D: [Brand] x [Name] at [MFW] is crazy... [Beauty], [Ending]
+    sentence = `${brand} x ${name} at ${mfw} is crazy... ${beauty}, ${ending}`;
   }
 
-  // 标点随机化
-  if (Math.random() < 0.4) {
-    sentence = sentence.replace(/(\.|\!|)$/, pick(["!!", " ~", "...", "!"]));
+  // 随机口语标点打字习惯化处理
+  if (Math.random() < 0.3) {
+    sentence = sentence.toLowerCase(); // 模拟全小写打字习惯
   }
 
   // 安全插入 0-4 个 Emoji (绝对不在开头，且绝对不打断 PP Krit 或 GUCCI)
   sentence = insertEmojiSafely(sentence);
 
-  // X 模式检测与拼接
+  // X (Twitter) 模式格式校验与字数控制
   let tag = "medium";
   if (sentence.length > 120) tag = "long";
   if (sentence.length < 60) tag = "short";
@@ -317,8 +339,8 @@ function buildGrammarText(isPre, isX) {
     if (fullX.length <= X_LIMIT) {
       sentence = fullX;
     } else {
-      // 超长削减兜底
-      sentence = insertEmojiSafely(`${name} in ${brand} is ate and left no crumbs at ${mfw}!`) + `\n\n${X_TAGS}`;
+      // 备用短文本
+      sentence = insertEmojiSafely(`${name} x ${brand} at ${mfw} is insane! ${beauty}`) + `\n\n${X_TAGS}`;
       tag = "short";
     }
   }
@@ -350,6 +372,7 @@ function render() {
     const card = document.createElement("div");
     card.className = "card";
     
+    // 高亮核心词汇（忽略大小写）
     const highlighted = item.text
       .replace(/PP Krit/gi, m => `<b>${m}</b>`)
       .replace(/@?GUCCI|Gucci/g, m => `<b>${m}</b>`)
