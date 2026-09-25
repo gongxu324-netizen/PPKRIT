@@ -203,7 +203,7 @@ const DB = {
     "Main character energy from", "No thoughts head empty just", "Front row royalty,", 
     "The camera truly loves", "Literally stopped scrolling for", "Breathtaking as always,"
   ],
-  NAMES: ["PP Krit", "PP Krit"],
+  NAMES: ["PP Krit"],
   BRAND_IG: ["GUCCI", "Gucci"],
   BRAND_X: ["GUCCI", "Gucci", "@gucci"],
   MFW_VARIANTS: ["MFW", "Milan Fashion Week", "MFW26", "Milan Fashion Week"],
@@ -246,26 +246,35 @@ let currentMode = "pre-ig";
 
 const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 
-// 0-4个 Emoji 安全插入逻辑（绝对不在开头出现）
+// 核心增强：保护关键词不被 Emoji 切断（PP Krit / GUCCI / Gucci 等均被视为单个不可拆分 Token）
 function insertEmojiSafely(text) {
   const count = Math.floor(Math.random() * 5); // 随机生成 0, 1, 2, 3, 4 个
   if (count === 0) return text;
 
-  const words = text.split(" ");
+  // 使用占位符将关键短语保护起来，避免按空格分割时把 "PP" 和 "Krit" 切开
+  let safeText = text
+    .replace(/PP Krit/g, "PP_KRIT_TOKEN")
+    .replace(/@gucci/gi, "AT_GUCCI_TOKEN")
+    .replace(/@ppkritt/gi, "AT_PPKRITT_TOKEN");
+
+  const tokens = safeText.split(" ");
 
   for (let i = 0; i < count; i++) {
     const e = pick(DB.EMOJIS);
-    // 60% 概率拼在句尾，40% 概率插在单词中间（但绝对跳过 index 0，保证不在开头）
-    if (words.length <= 2 || Math.random() < 0.6) {
-      words.push(e);
+    // 65% 概率拼在句尾，35% 概率插在词汇之间（跳过 index 0 保证绝对不在开头）
+    if (tokens.length <= 2 || Math.random() < 0.65) {
+      tokens.push(e);
     } else {
-      // 在 index 1 到 length-1 之间随机插入
-      const pos = Math.floor(Math.random() * (words.length - 1)) + 1;
-      words[pos] = words[pos] + " " + e;
+      const pos = Math.floor(Math.random() * (tokens.length - 1)) + 1;
+      tokens[pos] = tokens[pos] + " " + e;
     }
   }
 
-  return words.join(" ");
+  // 还原保护的关键词
+  return tokens.join(" ")
+    .replace(/PP_KRIT_TOKEN/g, "PP Krit")
+    .replace(/AT_GUCCI_TOKEN/g, "@gucci")
+    .replace(/AT_PPKRITT_TOKEN/g, "@ppkritt");
 }
 
 function buildGrammarText(isPre, isX) {
@@ -295,7 +304,7 @@ function buildGrammarText(isPre, isX) {
     sentence = sentence.replace(/(\.|\!|)$/, pick(["!!", " ~", "...", "!"]));
   }
 
-  // 安全插入 0-4 个 Emoji (绝对不在开头)
+  // 安全插入 0-4 个 Emoji (绝对不在开头，且绝对不打断 PP Krit 或 GUCCI)
   sentence = insertEmojiSafely(sentence);
 
   // X 模式检测与拼接
